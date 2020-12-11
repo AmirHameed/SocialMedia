@@ -4,6 +4,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:social_media/utility/routes.dart';
+import 'package:social_media/utility/widget/bottomNavBar.dart';
 import 'package:social_media/views/homeView.dart';
 
 void main() {
@@ -44,6 +45,7 @@ class MyHomePage extends StatelessWidget {
         child: Icon(Icons.add, size: 30),
         onPressed: () {},
       ),
+      bottomNavigationBar: NavBar(),
       backgroundColor: NeumorphicTheme.baseColor(context),
       body: Center(
         child: Column(
