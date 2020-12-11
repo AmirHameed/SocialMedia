@@ -12,13 +12,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: true,
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.rightToLeft,
       title: 'Flutter Demo',
+      getPages: Routers.route,
+      initialRoute: '/homeView',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primarySwatch: Colors.deepOrange,
+        // appBarTheme: AppBarTheme(
+        //   color: Colors.deepOrange,
+        // ),
       ),
-      home: HomeView(),
     );
   }
 }
