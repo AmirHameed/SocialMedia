@@ -30,7 +30,7 @@ dependencies:
   flutter_neumorphic: ^3.0.3
   get: ^3.22.2
   flutter_xlider: ^3.4.0
-  audioplayers: ^0.17.0
+  audioplayers: ^0.7.8
   http: any
 
 dev_dependencies:
@@ -51,6 +51,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+    - assets/audio.mp3
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

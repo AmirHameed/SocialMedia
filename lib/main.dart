@@ -5,6 +5,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:social_media/utility/routes.dart';
 import 'package:social_media/utility/widget/bottomNavBar.dart';
+import 'package:social_media/views/audio.dart';
 import 'package:social_media/views/homeView.dart';
 import 'package:social_media/views/notificationsMessages.dart';
 import 'package:social_media/views/slider.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       //getPages: Routers.route,
       //initialRoute: '/homeView',
-      home: ClassSlider(),
+      home: PlaySound(),
       themeMode: ThemeMode.light,
       theme: NeumorphicThemeData(
         baseColor: Color(0xFFFFFFFF),
