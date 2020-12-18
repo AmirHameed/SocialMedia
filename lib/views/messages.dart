@@ -1,24 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
+import 'package:social_media/controllers/messageController.dart';
 import 'package:social_media/utility/widget/chatMessage.dart';
 
-class Messages extends StatefulWidget {
-  @override
-  _MessagesState createState() => _MessagesState();
-}
-
-class _MessagesState extends State<Messages> {
-  final TextEditingController _t1 = new TextEditingController();
-  final List<ChatMessage> _messages = <ChatMessage>[];
-  void _handleSubmitted(String text){
-    _t1.clear();
-    ChatMessage message = ChatMessage(
-      text: text,
-    );
-    setState(() {
-      _messages.insert(0, message);
-    });
-  }
+class Messages extends StatelessWidget {
+  final MessageController messageController = Get.put(MessageController());
   Widget _textComposerWidget(){
     return IconTheme(
       data: IconThemeData(
@@ -32,6 +19,7 @@ class _MessagesState extends State<Messages> {
                 style: NeumorphicStyle(
                   shape: NeumorphicShape.concave,
                   boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
+                  color: Color(0xFFFFFFFF),
                 ),
                 child: Row(
                   children: [
@@ -44,8 +32,8 @@ class _MessagesState extends State<Messages> {
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 20)
                         ),
-                        controller: _t1,
-                        onSubmitted: _handleSubmitted,
+                        controller: messageController.t1,
+                        onSubmitted: messageController.handleSubmitted,
                       ),
                     ),
                     IconButton(
@@ -53,14 +41,14 @@ class _MessagesState extends State<Messages> {
                         Icons.attach_file_outlined,
                         color: Colors.grey,
                       ),
-                      onPressed: ()=> _handleSubmitted(_t1.text),
+                      onPressed: ()=> messageController.handleSubmitted(messageController.t1.text),
                     ),
                     IconButton(
                       icon: Icon(
                         Icons.mic_none_outlined,
                         color: Colors.grey,
                       ),
-                      onPressed: ()=> _handleSubmitted(_t1.text),
+                      onPressed: ()=> messageController.handleSubmitted(messageController.t1.text),
                     ),
                   ],
                 ),
@@ -74,11 +62,13 @@ class _MessagesState extends State<Messages> {
   }
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60),
         child: AppBar(
-          backgroundColor: NeumorphicTheme.baseColor(context),
+          backgroundColor:  Color(0xFFFFFFFF),
           automaticallyImplyLeading: false,
 
           title: Row(
@@ -98,7 +88,7 @@ class _MessagesState extends State<Messages> {
                             boxShape: NeumorphicBoxShape.roundRect(
                                 BorderRadius.circular(50)),
                             lightSource: LightSource.topLeft,
-                            color: Colors.grey[200]),
+                          color: Color(0xFFFFFFFF),),
                         child: Container(
                           padding: const EdgeInsets.all(12),
                           child: Text(
@@ -132,7 +122,7 @@ class _MessagesState extends State<Messages> {
                       'Marbury(41); Madison(25)',
                       style: TextStyle(
                         color: Colors.grey,
-                        fontSize: 14,
+                        fontSize: width/32,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
@@ -157,7 +147,7 @@ class _MessagesState extends State<Messages> {
                   child: Column(
                     children: [
                       CircleAvatar(
-                          backgroundColor: Colors.grey[300],
+                          backgroundColor: Colors.grey[200],
                           radius: 18.0,
                           child: Text(
                             'End',
@@ -181,12 +171,13 @@ class _MessagesState extends State<Messages> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Flexible(
-            child: ListView.builder(
+            child: Obx(()=>ListView.builder(
               padding: EdgeInsets.all(8.0),
               reverse: true,
-              itemBuilder: (_,int index)=>_messages[index],
-              itemCount: _messages.length,
+              itemBuilder: (_,int index)=>messageController.messages[index],
+              itemCount: messageController.messages.length,
             ),
+            )
           ),
           Divider(height: 1.0,),
           Padding(

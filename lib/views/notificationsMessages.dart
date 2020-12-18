@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 
 import 'messages.dart';
 
@@ -15,7 +16,16 @@ class NotificationsMessages extends StatelessWidget {
     bool screen = orien == Orientation.portrait ? true : false;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: NeumorphicTheme.baseColor(context),
+        backgroundColor: Color(0xFFFFFFFF),
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.grey[400],
+          ),
+          onPressed: (){
+            Get.back();
+          },
+        ),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -26,8 +36,11 @@ class NotificationsMessages extends StatelessWidget {
                       NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
                   depth: 12,
                   lightSource: LightSource.topLeft,
-                  color: Colors.grey),
+                  color: Color(0xFFFFFFFF)),
               child: NeumorphicButton(
+                style: NeumorphicStyle(
+                  color: Color(0xFFFFFFFF),
+                ),
                 child: Text(
                   'Notification',
                   style: TextStyle(
@@ -42,14 +55,19 @@ class NotificationsMessages extends StatelessWidget {
                       NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
                   depth: 12,
                   lightSource: LightSource.topLeft,
-                  color: Colors.grey),
+                  color: Color(0xFFFFFFFF)),
               child: NeumorphicButton(
+                style: NeumorphicStyle(
+                  color: Color(0xFFFFFFFF),
+                ),
                 child: Text(
                   'Messages',
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) =>Messages()));},
+                onPressed: () {
+                  Get.toNamed('/messages');
+                }
               ),
             ),
           ],
@@ -87,7 +105,7 @@ class NotificationsMessages extends StatelessWidget {
                               // depth: 8,
                               intensity: 5,
                               lightSource: LightSource.left,
-                              // color: Colors.grey
+                               color:Color(0xFFFFFFFF),
                             ),
                             child: Container(
                               padding: const EdgeInsets.only(bottom: 10),
@@ -168,7 +186,7 @@ class NotificationsMessages extends StatelessWidget {
                             // depth: 8,
                             intensity: 5,
                             lightSource: LightSource.left,
-                            // color: Colors.grey
+                            color: Color(0xFFFFFFFF)
                           ),
                           child: Container(
                             padding: const EdgeInsets.only(bottom: 10),
@@ -251,7 +269,7 @@ class NotificationsMessages extends StatelessWidget {
                         // depth: 8,
                         intensity: 5,
                         lightSource: LightSource.left,
-                        // color: Colors.grey
+                       color: Color(0xFFFFFFFF)
                       ),
                       child: Container(
                         padding: const EdgeInsets.only(bottom: 10),
@@ -341,7 +359,7 @@ class NotificationsMessages extends StatelessWidget {
                             // depth: 8,
                             intensity: 5,
                             lightSource: LightSource.left,
-                            // color: Colors.grey
+                           color: Color(0xFFFFFFFF)
                           ),
                           child: Container(
                             padding: const EdgeInsets.only(bottom: 10),
@@ -417,7 +435,7 @@ class NotificationsMessages extends StatelessWidget {
                             // depth: 8,
                             intensity: 5,
                             lightSource: LightSource.left,
-                            // color: Colors.grey
+                           color: Color(0xFFFFFFFF)
                           ),
                           child: Container(
                             padding: const EdgeInsets.only(bottom: 10),

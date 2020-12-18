@@ -1,61 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
+import 'package:social_media/controllers/sliderController.dart';
+import 'package:social_media/views/homeView.dart';
+import 'package:social_media/views/liveImage.dart';
+import 'package:social_media/views/readingPost.dart';
 
-class NavBar extends StatefulWidget {
-  @override
-  _NavBarState createState() => _NavBarState();
-}
-
-class _NavBarState extends State<NavBar> {
+class NavBar extends StatelessWidget {
+  //final SliderController sliderController = Get.put(SliderController());
   int currentIndex = 0;
-
   void incrementTab(index) {
-    setState(() {
-      currentIndex = index;
-    });
+    currentIndex = index;
   }
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return BottomNavigationBar(
-        backgroundColor: NeumorphicTheme.baseColor(context),
+        backgroundColor: Color(0xFFFFFFFF),
         currentIndex: currentIndex,
+        selectedFontSize: 4,
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
               icon: IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.offNamed('/homeView');
+                },
                 icon: Image.asset(
                   'assets/images/home (1).png',
-                  height: 25,
-                  width: 25,
                 ),
               ),
               label: ''),
           BottomNavigationBarItem(
               icon: IconButton(
                 onPressed: () {
-                  // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyDonations()));
+                 // Navigator.push(context, MaterialPageRoute(builder: (context) => ReadingView()));
                 },
                 icon: Image.asset(
                   'assets/images/search-24px.png',
                 ),
-                iconSize: 35,
               ),
               label: ''),
           BottomNavigationBarItem(
               icon: NeumorphicButton(
                 onPressed: () {
-                  print("onClick");
+                 Get.toNamed('/readingPost');
                 },
                 style: NeumorphicStyle(
-                  shape: NeumorphicShape.flat,
+                  shape: NeumorphicShape.concave,
                   boxShape: NeumorphicBoxShape.circle(),
+                  color: Color(0xFFFFFFFF),
                 ),
                 child: Image.asset(
                   'assets/images/Group 2133.png',
-                  height: 25,
-                  width: 25,
+                  height: height/28,
+                  width: width/18,
                 ),
               ),
               label: ''),
@@ -67,33 +69,53 @@ class _NavBarState extends State<NavBar> {
                 icon: Image.asset(
                   'assets/images/Group 2134.png',
                 ),
-                iconSize: 35,
+                iconSize: width/12,
               ),
               label: ''),
           BottomNavigationBarItem(
-            icon: NeumorphicButton(
-              margin: EdgeInsets.only(top: 12),
-              onPressed: () {},
-              style: NeumorphicStyle(
-                shape: NeumorphicShape.flat,
-                boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+              icon:   Container(
+                margin: EdgeInsets.only(right: 2),
+                //padding: EdgeInsets.symmetric(horizontal: 6),
+                width: width/5,
+                height: height/20,
+                child: Neumorphic(
+                  style: NeumorphicStyle(
+                      shape: NeumorphicShape.concave,
+                      depth: 5,
+                      boxShape:
+                      NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
+                      lightSource: LightSource.topLeft,
+                      color:  Color(0xFFFFFFFF),),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 5),
+                        child: Text(
+                          'Repo \n 999',
+                          style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: width/35,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      CircleAvatar(
+                        radius: width/21,
+                        backgroundColor: Colors.transparent,
+                        child: ClipOval(
+                            child: Image.asset(
+                              'assets/images/Ellipse 311.png',
+                              width: width/10,
+                              fit: BoxFit.cover,
+                            )),
+                      ),
+
+                    ],
+                  ),
+                ),
               ),
-              child: Row(
-                children: [
-                  Text("ksdlsdkls"),
-                  // CircleAvatar(
-                  //   radius: 30,
-                  //   backgroundColor: Colors.transparent,
-                  //   child: ClipOval(
-                  //     child: Image.asset('assets/images/profileImage.png'),
-                  //   ),
-                  // ),
-                ],
-              ),
-            ),
-              label: ''
-          ),
+              label: ''),
         ]);
   }
 }
