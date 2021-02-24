@@ -27,8 +27,6 @@ dependencies:
   flutter_neumorphic: ^3.0.3
   get: ^3.22.2
   flutter_xlider: ^3.4.0
-  audioplayers: ^0.7.8
-  http: any
   video_player: ^1.0.1
 
 
@@ -36,23 +34,13 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
 
-  # The following line ensures that the Material Icons font is
-  # included with your application, so that you can use the icons in
-  # the material Icons class.
   uses-material-design: true
-
-  # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/audio.mp3
     - assets/coffee.mp4
-    - assets/space.mp4
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

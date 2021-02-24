@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:get/get.dart';
-import 'package:readmore/readmore.dart';
 import 'package:social_media/controllers/videoController.dart';
 import 'package:video_player/video_player.dart';
 

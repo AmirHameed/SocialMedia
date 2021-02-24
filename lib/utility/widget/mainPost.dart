@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:get/get.dart';
-import 'package:readmore/readmore.dart';
 import 'package:social_media/controllers/sliderController.dart';
 class mainPost extends StatelessWidget {
 
@@ -76,8 +75,8 @@ class mainPost extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Elon22> Tesla.Motors",style: TextStyle(fontSize:width/20,fontWeight: FontWeight.w700,color: Colors.black),),
-                      Text("12:59 am, Pakistan",style: TextStyle(fontSize:width/25,color: Colors.grey),),
+                      Text("Elon22> Tesla.Motors",style: TextStyle(fontSize:width/23,fontWeight: FontWeight.w700,color: Colors.black),),
+                      Text("12:59 am, Pakistan",style: TextStyle(fontSize:width/28,color: Colors.grey),),
                     ],
                   ),
                 ],),

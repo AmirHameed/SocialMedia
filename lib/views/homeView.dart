@@ -6,7 +6,6 @@ import 'package:social_media/utility/widget/bottomNavBar.dart';
 import 'package:social_media/utility/widget/circle_theme.dart';
 import 'package:social_media/utility/widget/mainPost.dart';
 import 'package:social_media/utility/widget/story.dart';
-import 'package:social_media/views/notificationsMessages.dart';
 class Home extends StatelessWidget {
 
   Widget build(BuildContext context) {
@@ -25,12 +24,12 @@ class Home extends StatelessWidget {
                 flex: 1,
                 child: Row(children: [
                   Expanded(
-                    flex: 8,
+                    flex: 6,
                       child: Row(
                     children: [
-                      CircleTheme(image: 'assets/images/Ellipse 2.png',text: 'INNER CIRCLE',width: width/3.5,),
-                      CircleTheme(image: 'assets/images/Ellipse -2.png',text: 'OUTER CIRCLE',width: width/3.4,),
-                      CircleTheme(image: 'assets/images/Ellipse -1.png',text: 'UNIVERSE',width: width/3.5,),
+                      CircleTheme(image: 'assets/images/Ellipse 2.png',text: 'INNER CIRCLE',width: width/3.7,),
+                      CircleTheme(image: 'assets/images/Ellipse -2.png',text: 'OUTER CIRCLE',width: width/3.7,),
+                      CircleTheme(image: 'assets/images/Ellipse -1.png',text: 'UNIVERSE',width: width/3.7,),
                     ],
                   )),
 

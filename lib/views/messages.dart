@@ -116,13 +116,13 @@ class Messages extends StatelessWidget {
                   children: [
                     Text(
                       'Court',
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.black,fontSize: width/20),
                     ),
                     Text(
                       'Marbury(41); Madison(25)',
                       style: TextStyle(
                         color: Colors.grey,
-                        fontSize: width/32,
+                        fontSize: width/35,
                         fontStyle: FontStyle.italic,
                       ),
                     ),
@@ -136,7 +136,7 @@ class Messages extends StatelessWidget {
           actions: [
             Container(
               height: 50,
-              width: 50,
+              width: 40,
               child: Neumorphic(
                 style: NeumorphicStyle(
                     shape: NeumorphicShape.convex,

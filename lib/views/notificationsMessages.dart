@@ -227,7 +227,7 @@ class NotificationsMessages extends StatelessWidget {
                                       ),
                                       Text(
                                         '114 others also vibed on your post',
-                                        style: TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey,fontSize: width/30),
                                       ),
                                       Text(
                                         '3 min ago',
@@ -239,11 +239,11 @@ class NotificationsMessages extends StatelessWidget {
                                 Row(
                                   children: [
                                     InkWell(
-                                      child: Image.asset('assets/images/cancel.png',height: 40,),
+                                      child: Image.asset('assets/images/cancel.png',height: 40,width: 40,),
                                       onTap: (){},
                                     ),
                                     InkWell(
-                                      child: Image.asset('assets/images/check.png',height: 30,),
+                                      child: Image.asset('assets/images/check.png',height: 30,width: 30,),
                                       onTap: (){
                                         setState(){
                                           check = true;
@@ -476,7 +476,7 @@ class NotificationsMessages extends StatelessWidget {
                                       ),
                                       Text(
                                         '114 others also vibed on your post',
-                                        style: TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey,fontSize: width/30),
                                       ),
                                       Text(
                                         '3 min ago',

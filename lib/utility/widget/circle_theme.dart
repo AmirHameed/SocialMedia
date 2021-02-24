@@ -10,7 +10,7 @@ class CircleTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return   Container(
-      margin: EdgeInsets.symmetric(vertical: 6, horizontal: 2),
+      margin: EdgeInsets.symmetric(vertical: 0, horizontal: 2),
       color: Colors.transparent,
       height: height/18,
       child: Neumorphic(
@@ -40,7 +40,7 @@ class CircleTheme extends StatelessWidget {
                 text,
                 style: TextStyle(
                   color: color,
-                  fontSize: width/12,
+                  fontSize: width/16,
                 ),
                 textAlign: TextAlign.center,
               ),
