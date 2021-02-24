@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
-const String _name = "Usama Laeeq";
+const String _name = "Usama Laee";
 
 class ChatMessage extends StatelessWidget {
   final String text;
