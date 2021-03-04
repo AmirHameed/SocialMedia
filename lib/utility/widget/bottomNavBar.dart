@@ -16,8 +16,8 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
+      double width = MediaQuery.of(context).size.width;
+      double height = MediaQuery.of(context).size.height;
     return BottomNavigationBar(
         backgroundColor: Color(0xFFFFFFFF),
         currentIndex: currentIndex,
@@ -37,7 +37,8 @@ class NavBar extends StatelessWidget {
           BottomNavigationBarItem(
               icon: IconButton(
                 onPressed: () {
-                 // Navigator.push(context, MaterialPageRoute(builder: (context) => ReadingView()));
+                  Get.toNamed('/readingPost');
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) => ReadingView()));
                 },
                 icon: Image.asset(
                   'assets/images/search-24px.png',
@@ -47,7 +48,7 @@ class NavBar extends StatelessWidget {
           BottomNavigationBarItem(
               icon: NeumorphicButton(
                 onPressed: () {
-                 Get.toNamed('/readingPost');
+                 Get.toNamed('/post_screen');
                 },
                 style: NeumorphicStyle(
                   shape: NeumorphicShape.concave,

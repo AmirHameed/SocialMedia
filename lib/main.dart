@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Social Media',
       getPages: Routers.route,
-      initialRoute: '/homeView',
+      initialRoute: '/login_screen',
     );
   }
 }
