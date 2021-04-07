@@ -1,10 +1,9 @@
-import 'package:auto_size_text/auto_size_text.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:get/get.dart';
+
 import 'package:social_media/utility/constants.dart';
-import 'package:social_media/views/review_screens/group.dart';
 
 class MainHomeScreen extends StatefulWidget {
   @override

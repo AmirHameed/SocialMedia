@@ -9,6 +9,9 @@ import 'package:social_media/views/job.dart';
 import 'package:social_media/views/liveImage.dart';
 import 'package:social_media/views/main_home.dart';
 import 'package:social_media/views/messages.dart';
+import 'package:social_media/views/newScreens/group_messahe31.dart';
+import 'package:social_media/views/newScreens/new_groups27.dart';
+import 'package:social_media/views/newScreens/search_sacreen41.dart';
 import 'package:social_media/views/new_group_screen.dart';
 import 'package:social_media/views/next_screen.dart';
 import 'package:social_media/views/notificationsMessages.dart';
@@ -33,6 +36,10 @@ class Routers {
     GetPage(
       name: '/homeView',
       page: () => Home(),
+    ),
+     GetPage(
+      name: '/newGroup27',
+      page: () => NewGroup(),
     ),
     GetPage(
       name: '/notificationsMessages',
@@ -88,9 +95,17 @@ class Routers {
       name: '/service_review_screen',
       page: () => ServiceReviewScreen(),
     ),
+     GetPage(
+      name: '/searchScreen',
+      page: () => SearchScreen(),
+    ),
     GetPage(
       name: '/group',
       page: () => GroupScreen(),
+    ),
+     GetPage(
+      name: '/groupMessage',
+      page: () => GroupMessages(),
     ),
     GetPage(
       name: '/truth',
