@@ -7,6 +7,7 @@ import 'package:social_media/views/initiative/cause.dart';
 import 'package:social_media/views/initiative/event.dart';
 import 'package:social_media/views/job.dart';
 import 'package:social_media/views/liveImage.dart';
+import 'package:social_media/views/main_home.dart';
 import 'package:social_media/views/messages.dart';
 import 'package:social_media/views/new_group_screen.dart';
 import 'package:social_media/views/next_screen.dart';
@@ -123,6 +124,10 @@ class Routers {
     GetPage(
       name: '/article',
       page: () => Article(),
+    ),
+    GetPage(
+      name: '/main_home',
+      page: () => MainHomeScreen(),
     ),
     GetPage(
       name: '/liveImage',
