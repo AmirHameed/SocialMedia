@@ -1,13 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:get/get.dart';
 import 'package:social_media/utility/constants.dart';
 import 'package:social_media/utility/widget/gradient_button.dart';
 
-import 'done_screen.dart';
-
-class MyChoiceNextScreen extends StatelessWidget {
+class DoneScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,10 +44,8 @@ class MyChoiceNextScreen extends StatelessWidget {
                         width: width/3,
                         height: height/20,
                         child: InkWell(
-                          onTap: (){
-                            Get.to(DoneScreen());
-                          },
-                          child: Center(child: Text("Skip",style: TextStyle(fontWeight: FontWeight.bold),)),
+                          onTap: (){},
+                          child: Center(child: Text("Done",style: TextStyle(fontWeight: FontWeight.bold),)),
                         ),
                       ),
                     ),
@@ -80,8 +75,8 @@ class MyChoiceNextScreen extends StatelessWidget {
                       width: width/3,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('assets/images/back.jpg'),
-                          fit: BoxFit.cover
+                            image: AssetImage('assets/images/back.jpg'),
+                            fit: BoxFit.cover
                         ),
                         borderRadius: BorderRadius.circular(90.0),
                       ),
@@ -134,16 +129,16 @@ class ChoiceWidget extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                      CircleAvatar(
-                      radius: width/21,
-                      backgroundColor: Colors.transparent,
-                      child: ClipOval(
-                          child: Image.asset(
-                            'assets/images/Ellipse 311.png',
-                            width: width/10,
-                            fit: BoxFit.cover,
-                          )),
-                    ),
+                        CircleAvatar(
+                          radius: width/21,
+                          backgroundColor: Colors.transparent,
+                          child: ClipOval(
+                              child: Image.asset(
+                                'assets/images/Ellipse 311.png',
+                                width: width/10,
+                                fit: BoxFit.cover,
+                              )),
+                        ),
                         Text(
                           'Dancing   ',
                           style: TextStyle(
@@ -176,9 +171,9 @@ class ChoiceWidget extends StatelessWidget {
               // maxLines: 4,
               cursorColor: Colors.grey,
               decoration: InputDecoration(
-                hintText: "Type your answer here",
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.all(16)
+                  hintText: "Type your answer here",
+                  border: InputBorder.none,
+                  contentPadding: const EdgeInsets.all(16)
                 // contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0)
               ),
               // controller: questionText,

@@ -15,87 +15,93 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              NeumorphicText('OOUMPH',style:NeumorphicStyle(disableDepth: true,) ,textStyle: NeumorphicTextStyle(fontSize: 22,fontWeight: FontWeight.bold),),
-              Image.asset(''),
-              Text('Members Only',style: TextStyle(color: Colors.black54),),
-              Row(
-                children: [
-                  LoginSocialButtons(onPressed: null,),
-                  LoginSocialButtons(onPressed: null,),
-                  LoginSocialButtons(onPressed: null,),
-                ],
-              ),
-              Neumorphic(
-                style: NeumorphicStyle(
-                  shape: NeumorphicShape.concave,
-                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(42.0)),
-                  color: Color(0xFFFFFFFF),
-                  depth: -35,
-                ),
-                child:
-                Expanded(
-                  child: TextField(
-                    // maxLines: 4,
-                    cursorColor: Colors.grey,
-                    decoration: InputDecoration(
-                        hintText: "Email Address",
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.mail),
-                        // contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0)
+              Image.asset('assets/images/login_image.png'),
+              Text('Members Only',style: TextStyle(color: Colors.black54,fontWeight: FontWeight.bold),),
+              Image.asset('assets/images/social_media.png'),
+              Padding(
+                padding: const EdgeInsets.only(left: 15,right: 15,top: 10,bottom: 10),
+                child: Column(
+                  children: [
+                    Neumorphic(
+                      style: NeumorphicStyle(
+                        shape: NeumorphicShape.concave,
+                        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(42.0)),
+                        color: Color(0xFFFFFFFF),
+                        depth: -35,
+                      ),
+                      child:
+                      Expanded(
+                        child: TextField(
+                          // maxLines: 4,
+                          cursorColor: Colors.grey,
+                          decoration: InputDecoration(
+                              hintText: "Email Address",
+                              border: InputBorder.none,
+                              prefixIcon: Icon(Icons.mail),
+                              // contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0)
+                          ),
+                          // controller: questionText,
+                          // onSubmitted: messageController.handleSubmitted,
+                        ),
+                      ),
                     ),
-                    // controller: questionText,
-                    // onSubmitted: messageController.handleSubmitted,
-                  ),
-                ),
-              ),
-              Neumorphic(
-                style: NeumorphicStyle(
-                  // shape: NeumorphicShape.concave,
-                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(42.0)),
-                  color: Color(0xFFFFFFFF),
-                  depth: -35,
-                ),
-                child:
-                Expanded(
-                  child: TextField(
-                    // maxLines: 4,
-                    cursorColor: Colors.grey,
-                    decoration: InputDecoration(
-                        hintText: "Password",
-                        border: InputBorder.none,
-                        prefixIcon: Icon(Icons.lock),
-                        // contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0)
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15,bottom: 40),
+                      child: Neumorphic(
+                        style: NeumorphicStyle(
+                          // shape: NeumorphicShape.concave,
+                          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(42.0)),
+                          color: Color(0xFFFFFFFF),
+                          depth: -35,
+                        ),
+                        child:
+                        Expanded(
+                          child: TextField(
+                            // maxLines: 4,
+                            cursorColor: Colors.grey,
+                            decoration: InputDecoration(
+                                hintText: "Password",
+                                border: InputBorder.none,
+                                prefixIcon: Icon(Icons.lock),
+                                // contentPadding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0)
+                            ),
+                            // controller: questionText,
+                            // onSubmitted: messageController.handleSubmitted,
+                          ),
+                        ),
+                      ),
                     ),
-                    // controller: questionText,
-                    // onSubmitted: messageController.handleSubmitted,
-                  ),
-                ),
-              ),
             Neumorphic(
-              style: NeumorphicStyle(
-                // shape: NeumorphicShape.concave,
-                boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                color: Color(0xFFFFFFFF),
-                depth: 35,
-              ),
-              child: Container(
-                width: width,
-                child: UnicornOutlineButton(
-                  strokeWidth: 2,
-                  radius: 16,
-                  gradient: LinearGradient(
-                    colors: [ Colors.purple,Colors.blue,Colors.green,Colors.lightGreen],
-                    // begin: Alignment.topCenter,
-                    // end: Alignment.bottomCenter,
-                  ),
-                  child: Text('Login', style: TextStyle(fontSize: 16)),
-                  onPressed: () {},
+                    style: NeumorphicStyle(
+                      // shape: NeumorphicShape.concave,
+                      boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
+                      color: Color(0xFFFFFFFF),
+                      depth: 35,
+                    ),
+                    child: Container(
+                      width: width,
+                      child: UnicornOutlineButton(
+                        strokeWidth: 2,
+                        radius: 16,
+                        gradient: LinearGradient(
+                          colors: [ Colors.purple,Colors.blue,Colors.green,Colors.lightGreen],
+                          // begin: Alignment.topCenter,
+                          // end: Alignment.bottomCenter,
+                        ),
+                        child: Text('Login', style: TextStyle(fontSize: 16)),
+                        onPressed: () {},
+                      ),
+                    ),
+            ),
+                  ],
                 ),
               ),
-            ),
-              InkWell(
-                  onTap: (){},
-                  child: Text("Forgot your password?")),
+              Padding(
+                padding: const EdgeInsets.only(top: 10,bottom: 40),
+                child: InkWell(
+                    onTap: (){},
+                    child: Text("Forgot your password?")),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -115,18 +121,21 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              Neumorphic(
-                style: NeumorphicStyle(
-                  color: Color(0xFFFFFFFF),
-                  depth: 1,
-                  boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
+              Padding(
+                padding: const EdgeInsets.only(top: 60),
+                child: Neumorphic(
+                  style: NeumorphicStyle(
+                    color: Color(0xFFFFFFFF),
+                    depth: 1,
+                    boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
 
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: InkWell(child: Text('Want to apply for an account? Continue'),onTap: (){
-                    Get.to(RegistrationScreen());
-                  },),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: InkWell(child: Text('Want to apply for an account? Continue'),onTap: (){
+                      Get.to(RegistrationScreen());
+                    },),
+                  ),
                 ),
               ),
             ],

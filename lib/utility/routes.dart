@@ -15,6 +15,7 @@ import 'package:social_media/views/poll.dart';
 import 'package:social_media/views/post_screen.dart';
 import 'package:social_media/views/readingPost.dart';
 import 'package:social_media/views/review_screens/group.dart';
+import 'package:social_media/views/review_screens/onBoarding_screen.dart';
 import 'package:social_media/views/review_screens/product_screen.dart';
 import 'package:social_media/views/review_screens/service_review_screen.dart';
 import 'package:social_media/views/review_screens/videos_screen.dart';
@@ -22,6 +23,7 @@ import 'package:social_media/views/seeMore.dart';
 import 'package:social_media/views/sell_screen.dart';
 import 'package:social_media/views/service_screen.dart';
 import 'package:social_media/views/share_screen.dart';
+import 'package:social_media/views/splash_screen.dart';
 import 'package:social_media/views/text_screen.dart';
 import 'package:social_media/views/truth.dart';
 
@@ -102,8 +104,16 @@ class Routers {
       page: () => ServiceScreen(),
     ),
     GetPage(
+      name: '/onBoarding_screen',
+      page: () => OnBoardingPage(),
+    ),
+    GetPage(
       name: '/sell_screen',
       page: () => SellScreen(),
+    ),
+    GetPage(
+      name: '/splash_screen',
+      page: () => SplashScreen(),
     ),
     //// hr@intellisoftsolutions.com
     GetPage(

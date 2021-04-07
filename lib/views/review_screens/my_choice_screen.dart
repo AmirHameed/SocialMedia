@@ -15,7 +15,7 @@ class MyChoiceScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 25),
+                padding: const EdgeInsets.only(top: 25,bottom: 10),
                 child: Text("My Choices",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22),),
               ),
               Text("Fine tune your Ooumph experience here"),
@@ -45,12 +45,6 @@ class MyChoiceScreen extends StatelessWidget {
                   MyChoiceWidget(),
                   MyChoiceWidget(),
                 ],
-              ), Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  MyChoiceWidget(),
-                  MyChoiceWidget(),
-                ],
               ),
             ],
           ),
@@ -70,7 +64,7 @@ class MyChoiceWidget extends StatelessWidget {
       style: NeumorphicStyle(
         // shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.circle(),
-        color: Color(0xFFFFFFFF),
+        color: Colors.black,
         depth: 1,
       ),
       child:  InkWell(
@@ -93,5 +87,23 @@ class MyChoiceWidget extends StatelessWidget {
         ),
       ),
     );
+    // return CircleAvatar(
+    //   backgroundColor: Colors.grey[300],
+    //   radius: 60,
+    //   child:  Stack(
+    //     children: [
+    //       ClipRRect(
+    //           borderRadius: BorderRadius.circular(120),
+    //           child: Image.asset(image, height: 100,)),
+    //       Positioned(
+    //         top: 50,
+    //         bottom: 50,
+    //         right: 10,
+    //         left: 25,
+    //         child: Center(child: Text("What defines me?",style: TextStyle(color: Colors.white))),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }

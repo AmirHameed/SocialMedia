@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-
-import '../homeView.dart';
+import 'package:social_media/utility/constants.dart';
+import 'package:social_media/utility/widget/gradient_button.dart';
+import 'package:social_media/views/auth/login_screen.dart';
 import 'my_choice_screen.dart';
 
 class OnBoardingPage extends StatelessWidget {
@@ -11,13 +13,13 @@ class OnBoardingPage extends StatelessWidget {
 
   void _onIntroEnd(context) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => MyChoiceScreen()),
+      MaterialPageRoute(builder: (_) => LoginScreen()),
     );
   }
 
   Widget _buildImage(String assetName) {
     return Align(
-      child: Image.asset('assets/$assetName.jpg', width: 350.0),
+      child: Image.asset(assetName, width: 350.0),
       alignment: Alignment.bottomCenter,
     );
   }
@@ -29,7 +31,7 @@ class OnBoardingPage extends StatelessWidget {
       titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
       bodyTextStyle: bodyStyle,
       descriptionPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 16.0),
-      pageColor: Colors.white,
+      pageColor: primaryWhite,
       imagePadding: EdgeInsets.zero,
     );
 
@@ -37,56 +39,36 @@ class OnBoardingPage extends StatelessWidget {
       key: introKey,
       pages: [
         PageViewModel(
-          title: "Fractional shares",
-          body:
-          "Instead of having to buy an entire share, invest any amount you want.",
-          image: _buildImage('img1'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "Learn as you go",
-          body:
-          "Download the Stockpile app and master the market with our mini-lesson.",
-          image: _buildImage('img2'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "Kids and teens",
-          body:
-          "Kids and teens can track their stocks 24/7 and place trades that you approve.",
-          image: _buildImage('img3'),
-          decoration: pageDecoration,
-        ),
-        PageViewModel(
-          title: "Another title page",
+          title: "Members Only",
           body: "Another beautiful body text for this example onboarding",
-          image: _buildImage('img2'),
-          footer: RaisedButton(
-            onPressed: () {
-              introKey.currentState?.animateScroll(0);
-            },
-            child: const Text(
-              'FooButton',
-              style: TextStyle(color: Colors.white),
-            ),
-            color: Colors.lightBlue,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-          ),
+
+          image: _buildImage('assets/images/onboarding1.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Title of last page",
-          bodyWidget: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text("Click on ", style: bodyStyle),
-              Icon(Icons.edit),
-              Text(" to edit a post", style: bodyStyle),
-            ],
-          ),
-          image: _buildImage('img1'),
+          title: "Members Only",
+          body: "Another beautiful body text for this example onboarding",
+
+          image: _buildImage('assets/images/onboarding2.png'),
+          decoration: pageDecoration,
+        ),
+        PageViewModel(
+          title: "Members Only",
+          body: "Another beautiful body text for this example onboarding",
+
+          image: _buildImage('assets/images/onboarding3.png'),
+          decoration: pageDecoration,
+        ),
+        PageViewModel(
+          title: "Members Only",
+          body: "Another beautiful body text for this example onboarding",
+          image: _buildImage('assets/images/onboarding2.png'),
+          decoration: pageDecoration,
+        ),
+        PageViewModel(
+          title: "Members Only",
+          body: "Another beautiful body text for this example onboarding",
+          image: _buildImage('assets/images/onboarding3.png'),
           decoration: pageDecoration,
         ),
       ],
@@ -95,13 +77,13 @@ class OnBoardingPage extends StatelessWidget {
       showSkipButton: true,
       skipFlex: 0,
       nextFlex: 0,
-      skip: const Text('Skip'),
-      next: const Icon(Icons.arrow_forward),
+      skip:  Expanded(child: Image.asset('assets/images/skip.png',width: width/4)),
+      next: Expanded(child: Image.asset('assets/images/next.png',width: width/4)),
       done: const Text('Done', style: TextStyle(fontWeight: FontWeight.w600)),
       dotsDecorator: const DotsDecorator(
-        size: Size(10.0, 10.0),
+        size: Size(3.0, 3.0),
         color: Color(0xFFBDBDBD),
-        activeSize: Size(22.0, 10.0),
+        activeSize: Size(7.0, 8.0),
         activeShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(25.0)),
         ),
