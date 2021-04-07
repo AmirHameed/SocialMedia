@@ -16,20 +16,27 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
   double screenRatio;
   AppBar appBar;
   List<Tab> tabList = List();
-  TabController _tabController;
+  TabController tabController;
   @override
   void initState() {
-    tabList.add(new Tab(text:'Overview',));
-    tabList.add(new Tab(text:'Workouts',));
-    _tabController = new TabController(vsync: this, length:
-    tabList.length);
+    // TODO: implement initState
     super.initState();
+    tabController = TabController(length: 3, vsync: this);
+    // detailerTabController = TabController(length: 3 ,vsync: this);
   }
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void initState() {
+  //   tabList.add(new Tab(text:'Overview',));
+  //   tabList.add(new Tab(text:'Workouts',));
+  //   _tabController = new TabController(vsync: this, length:
+  //   tabList.length);
+  //   super.initState();
+  // }
+  // @override
+  // void dispose() {
+  //   _tabController.dispose();
+  //   super.dispose();
+  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -350,45 +357,71 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                     //     ],
                     //   ),
                     // )
-                    new Container(
-                      decoration: new BoxDecoration(color: Theme.of(context).primaryColor),
-                      child: new TabBar(
-                        controller: _controller,
-                        tabs: [
-                          new Tab(
-                            icon: const Icon(Icons.home),
-                            text: 'Address',
-                          ),
-                          new Tab(
-                            icon: const Icon(Icons.my_location),
-                            text: 'Location',
-                          ),
+                    // new Container(
+                    //   decoration: new BoxDecoration(color: Theme.of(context).primaryColor),
+                    //   child: new TabBar(
+                    //     controller: _controller,
+                    //     tabs: [
+                    //       new Tab(
+                    //         icon: const Icon(Icons.home),
+                    //         text: 'Address',
+                    //       ),
+                    //       new Tab(
+                    //         icon: const Icon(Icons.my_location),
+                    //         text: 'Location',
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    // new Container(
+                    //   height: 80.0,
+                    //   child: new TabBarView(
+                    //     controller: _controller,
+                    //     children: <Widget>[
+                    //       new Card(
+                    //         child: new ListTile(
+                    //           leading: const Icon(Icons.home),
+                    //           title: new TextField(
+                    //             decoration: const InputDecoration(hintText: 'Search for address...'),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       new Card(
+                    //         child: new ListTile(
+                    //           leading: const Icon(Icons.location_on),
+                    //           title: new Text('Latitude: 48.09342\nLongitude: 11.23403'),
+                    //           trailing: new IconButton(icon: const Icon(Icons.my_location), onPressed: () {}),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    TabBar(
+                      controller: tabController,
+                      indicatorColor: Colors.pink,
+                      tabs: [
+                        Tab(
+                          child: Text('Book Now',style: TextStyle(color: Colors.blue,fontSize: width/33),),
+                        ),
+                        Tab(
+                          child: Text('Washed History',style: TextStyle(color: Colors.green,fontSize: width/33),),
+                        ),
+                        Tab(
+                          child: Text('Reviews & Ratings',style: TextStyle(color: Colors.yellow,fontSize: width/33),),
+                        ),
+                      ],
+
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        controller: tabController,
+                        children: [
+                          Text(""),
+                          Text(""),
+                          Text(""),
                         ],
                       ),
-                    ),
-                    new Container(
-                      height: 80.0,
-                      child: new TabBarView(
-                        controller: _controller,
-                        children: <Widget>[
-                          new Card(
-                            child: new ListTile(
-                              leading: const Icon(Icons.home),
-                              title: new TextField(
-                                decoration: const InputDecoration(hintText: 'Search for address...'),
-                              ),
-                            ),
-                          ),
-                          new Card(
-                            child: new ListTile(
-                              leading: const Icon(Icons.location_on),
-                              title: new Text('Latitude: 48.09342\nLongitude: 11.23403'),
-                              trailing: new IconButton(icon: const Icon(Icons.my_location), onPressed: () {}),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    )
                   ],
                 ),
               ),
