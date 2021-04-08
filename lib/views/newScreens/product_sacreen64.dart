@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:get/get.dart';
 
 import 'package:social_media/utility/constants.dart';
 import 'package:social_media/utility/widget/circle_theme.dart';
 
-class SearchScreen extends StatefulWidget {
+class ProductScreen extends StatefulWidget {
   @override
-  _SearchScreenState createState() => _SearchScreenState();
+  _ProductScreenState createState() => _ProductScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen>
+class _ProductScreenState extends State<ProductScreen>
     with SingleTickerProviderStateMixin {
   double screenSize;
   double screenRatio;
@@ -56,11 +55,6 @@ class _SearchScreenState extends State<SearchScreen>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Image.asset(
-                        'assets/images/ooumph.png',
-                        height: 40,
-                        width: 100,
-                      ),
                       Padding(
                         padding: const EdgeInsets.only(left: 10, right: 20),
                         child: Container(
@@ -109,26 +103,19 @@ class _SearchScreenState extends State<SearchScreen>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           MainHomeCategoryWidget(
-                            onTap: () {
-                            },
+                            onTap: () {},
                             image: 'assets/images/Group 1277.png',
                           ),
                           MainHomeCategoryWidget(
-                            onTap: () {
-                              Get.toNamed('/connectScreen');
-                            },
+                            onTap: () {},
                             image: 'assets/images/Group 3823.png',
                           ),
                           MainHomeCategoryWidget(
-                            onTap: () {
-                              Get.toNamed('/communityScreen');
-                            },
+                            onTap: () {},
                             image: 'assets/images/Group 3824.png',
                           ),
                           MainHomeCategoryWidget(
-                            onTap: () {
-                              Get.toNamed('/productScreen');
-                            },
+                            onTap: () {},
                             image: 'assets/images/Group 563.png',
                           ),
                         ],
@@ -142,24 +129,24 @@ class _SearchScreenState extends State<SearchScreen>
                         tabs: [
                           Tab(
                             child: Image.asset(
-                              'assets/images/frangers.png',
+                              'assets/images/shop.png',
                               height: height / 6,
                               width: width / 6,
                             ),
                           ),
                           Tab(
                             child: Image.asset(
-                              'assets/images/friends.png',
+                              'assets/images/funn.png',
                               height: height / 6,
                               width: width / 6,
                             ),
                           ),
                           Tab(
-                            child: Image.asset('assets/images/colleagues.png',
+                            child: Image.asset('assets/images/apps.png',
                                 height: height / 6, width: width / 6),
                           ),
                           Tab(
-                            child: Image.asset('assets/images/releative.png',
+                            child: Image.asset('assets/images/other.png',
                                 height: height / 6, width: width / 6),
                           ),
                         ],

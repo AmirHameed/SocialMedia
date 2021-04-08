@@ -9,6 +9,8 @@ import 'package:social_media/views/job.dart';
 import 'package:social_media/views/liveImage.dart';
 import 'package:social_media/views/main_home.dart';
 import 'package:social_media/views/messages.dart';
+import 'package:social_media/views/newScreens/community_sacreen64.dart';
+import 'package:social_media/views/newScreens/connect_sacreen54.dart';
 import 'package:social_media/views/newScreens/group_messahe31.dart';
 import 'package:social_media/views/newScreens/new_groups27.dart';
 import 'package:social_media/views/newScreens/search_sacreen41.dart';
@@ -98,6 +100,19 @@ class Routers {
      GetPage(
       name: '/searchScreen',
       page: () => SearchScreen(),
+    ),
+
+    GetPage(
+      name: '/connectScreen',
+      page: () => ConnectScreen(),
+    ),
+    GetPage(
+      name: '/communityScreen',
+      page: () => CommunityScreen(),
+    ),
+    GetPage(
+      name: '/productScreen',
+      page: () => ProductScreen(),
     ),
     GetPage(
       name: '/group',

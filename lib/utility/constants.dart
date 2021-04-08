@@ -13,4 +13,7 @@ class AppColors {
     BoxShadow(
         color: Colors.white.withOpacity(0.5), spreadRadius: -5, offset: Offset(-5, -5), blurRadius: 30),
   ];
+
+
+
 }
