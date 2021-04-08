@@ -74,7 +74,7 @@ class NewGroup extends StatelessWidget {
                           lightSource: LightSource.topLeft,
                           shape: NeumorphicShape.concave,
                           boxShape: NeumorphicBoxShape.roundRect(
-                              BorderRadius.circular(20)),
+                              BorderRadius.circular(22)),
                           color: Color(0xffDDDDDD)),
                       child: Row(
                         children: [
