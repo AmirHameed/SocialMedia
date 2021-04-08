@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 import 'package:social_media/utility/constants.dart';
 import 'package:social_media/utility/widget/gradient_button.dart';
 
@@ -44,7 +45,9 @@ class DoneScreen extends StatelessWidget {
                         width: width/3,
                         height: height/20,
                         child: InkWell(
-                          onTap: (){},
+                          onTap: (){
+                            Get.toNamed('/main_home');
+                          },
                           child: Center(child: Text("Done",style: TextStyle(fontWeight: FontWeight.bold),)),
                         ),
                       ),

@@ -352,7 +352,7 @@ class BottomNavWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             PostScreenButton(text: 'Gallery',onTap: (){
-              Get.to(GalleryScreen());
+              // Get.to(GalleryScreen());
             },),
             PostScreenButton(text: 'Text',onTap: (){
               Get.off(QuestionScreen());

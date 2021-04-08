@@ -1,23 +1,27 @@
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-
+import 'package:flutter_xlider/flutter_xlider.dart';
+import 'package:get/get.dart';
 import 'package:social_media/utility/constants.dart';
 import 'package:social_media/utility/widget/bottomNavBar.dart';
+import 'package:social_media/utility/widget/profile_navBar.dart';
+import 'package:social_media/views/review_screens/group.dart';
 
-class MainHomeScreen extends StatefulWidget {
+class ProfileScreen extends StatefulWidget {
   @override
-  _MainHomeScreenState createState() => _MainHomeScreenState();
+  _ProfileScreenState createState() => _ProfileScreenState();
 }
 
-class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProviderStateMixin  {
+class _ProfileScreenState extends State<ProfileScreen> with SingleTickerProviderStateMixin  {
   double screenSize;
   double screenRatio;
   AppBar appBar;
   List<Tab> tabList = List();
   TabController tabController;
-
+  double _lowerValue = 50;
+bool diary = false;
   @override
   void initState() {
     // TODO: implement initState
@@ -41,9 +45,9 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      bottomNavigationBar: NavBar(),
       backgroundColor: Colors.grey[200],
+      resizeToAvoidBottomInset: false,
+      bottomNavigationBar: ProfileNavBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -95,7 +99,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 18),
                                 child: CircleAvatar(
-                                  child: Icon(Icons.person,color: Colors.grey,size: 45,),
+                                  child: Image.asset('assets/images/main_home_image.png',),
                                   radius: 35,
                                   backgroundColor: Colors.grey[200],
                                 ),
@@ -142,7 +146,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                                   borderRadius: BorderRadius.circular(18.0),
                                 ),
                                 color: Colors.white,
-                                child: Text("Edit Profile",style: TextStyle(color: Color(0xff00A2FF)),),
+                                child: Text("Connect As",style: TextStyle(color: Color(0xff00A2FF)),),
                                 onPressed: (){},
                               ),
                               Container(height: 70,),
@@ -209,7 +213,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                                     //   ),
                                     //   color: Colors.white,
                                     // ),
-                                    child: Center(child: Text("0",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey),)),
+                                    child: Center(child: Text("2.3k",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.grey),)),
                                   ),
                                 ),
                                 Text("Universe",style: TextStyle(fontWeight: FontWeight.w400,color: Colors.grey),),
@@ -227,7 +231,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                                   child: Container(
                                     height: 40,
                                     width: 70,
-                                    child: Center(child: Text("0",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),)),
+                                    child: Center(child: Text("2.3k",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),)),
                                   ),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
@@ -251,7 +255,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                                   child: Container(
                                     height: 40,
                                     width: 70,
-                                    child: Center(child: Text("0",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),)),
+                                    child: Center(child: Text("15",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),)),
                                   ),
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(36.0)                               ),
@@ -263,6 +267,129 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                         ],
                       ),
                     ),
+                    FlutterSlider(
+                      jump: true,
+                      handlerHeight: 32.0,
+                      trackBar: FlutterSliderTrackBar(
+                        activeTrackBar: BoxDecoration(
+                          gradient: SweepGradient(colors: [
+                            Colors.pink,
+                            Colors.blue,
+                            Colors.green,
+                            Colors.yellow,
+                            Colors.purple
+                          ], stops: [
+                            0.8,
+                            0.96,
+                            0.74,
+                            0.22,
+                            0.85
+                          ], startAngle: 0.5, endAngle: 1),
+                        ),
+                        inactiveTrackBar: BoxDecoration(
+                          gradient: SweepGradient(colors: [
+                            Colors.pink,
+                            Colors.blue,
+                            Colors.green,
+                            Colors.yellow,
+                            Colors.purple
+                          ], stops: [
+                            0.8,
+                            0.96,
+                            0.74,
+                            0.22,
+                            0.85
+                          ], startAngle: 0.5, endAngle: 1),
+                        ),
+                      ),
+                      values: [10],
+                      fixedValues: [
+                        FlutterSliderFixedValue(percent: 0, value: "0"),
+                        FlutterSliderFixedValue(percent: 10, value: "1.0"),
+                        FlutterSliderFixedValue(percent: 20, value: "1.5"),
+                        FlutterSliderFixedValue(percent: 30, value: "2.0"),
+                        FlutterSliderFixedValue(percent: 40, value: "2.5"),
+                        FlutterSliderFixedValue(percent: 50, value: "3.0"),
+                        FlutterSliderFixedValue(percent: 60, value: "3.5"),
+                        FlutterSliderFixedValue(percent: 70, value: "4.0"),
+                        FlutterSliderFixedValue(percent: 80, value: "4.5"),
+                        FlutterSliderFixedValue(percent: 90, value: "4.8"),
+                        FlutterSliderFixedValue(percent: 100, value: "5.0"),
+                      ],
+                      onDragging: (handlerIndex, lowerValue, upperValue) {
+                        _lowerValue = lowerValue;
+                      },
+                      handler: FlutterSliderHandler(
+                        // decoration: BoxDecoration(),
+
+                        child: Row(
+                          children: [
+                            // Image.asset('assets/images/leftBrackets.png'),
+                            Image.asset(
+                                'assets/images/NoPath - Copy (28).png'),
+                            // Image.asset('assets/images/rightBrackets.png'),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            InkWell(
+                              child: Text('+',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
+                              onTap: (){},
+                            ),
+                            Row(
+                              children: List.generate(5, (index) {
+                                return Container(
+                                  margin: EdgeInsets.only(right: 2),
+                                  //padding: EdgeInsets.symmetric(horizontal: 6),
+                                  width: width/4,
+                                  height: height/20,
+                                  child: Neumorphic(
+                                    style: NeumorphicStyle(
+                                      shape: NeumorphicShape.concave,
+                                      depth: 5,
+                                      boxShape:
+                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
+                                      lightSource: LightSource.topLeft,
+                                      color:  Color(0xFFFFFFFF),),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        CircleAvatar(
+                                          radius: width/21,
+                                          backgroundColor: Colors.transparent,
+                                          child: ClipOval(
+                                              child: Image.asset(
+                                                'assets/images/Ellipse 311.png',
+                                                width: width/10,
+                                                fit: BoxFit.cover,
+                                              )),
+                                        ),
+                                        Text(
+                                          'Lovely   ',
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: width/35,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+
+
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
@@ -271,6 +398,32 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                           MainHomeCategoryWidget(onTap: (){},image: 'assets/images/Group 3823.png',),
                           MainHomeCategoryWidget(onTap: (){},image: 'assets/images/Group 3824.png',),
                           MainHomeCategoryWidget(onTap: (){},image: 'assets/images/Group 563.png',),
+                          InkWell(
+                            child: Card(
+                              color: Colors.black54,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12.0)
+                              ),
+                              child: Container(
+                                width: 100,
+                                height: 80,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Column(
+                                    children: [
+                                      Icon(Icons.menu_book_sharp,color: Colors.white,),
+                                      Text("Diary",style: TextStyle(color: Colors.white),)
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            onTap: (){
+                              setState(() {
+                                diary = true;
+                              });
+                            },
+                          )
                         ],
                       ),
                     ),
@@ -457,7 +610,6 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                     ),
                     Container(
                       height: 120,
-                      // color: Colors.green,
                       child: TabBarView(
                         controller: tabController,
                         children: [
@@ -543,7 +695,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                           ),
                         ],
                       ),
-                    ),
+                    )
                   ],
                 ),
               ),
@@ -554,17 +706,17 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
       ),
     );
   }
-  // Widget _getPage(Tab tab){
-  //   switch(tab.text){
-  //     // case 'Overview': return OverView();
-  //     // case 'Orders': return Workouts();
-  //   }
-  // }
+// Widget _getPage(Tab tab){
+//   switch(tab.text){
+//     // case 'Overview': return OverView();
+//     // case 'Orders': return Workouts();
+//   }
+// }
 }
 
 class HomeTabWidget extends StatelessWidget {
-String text;
-HomeTabWidget({this.text});
+  String text;
+  HomeTabWidget({this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -599,9 +751,9 @@ HomeTabWidget({this.text});
 }
 
 class MainHomeCategoryWidget extends StatelessWidget {
- String image;
- Function onTap;
- MainHomeCategoryWidget({this.onTap,this.image});
+  String image;
+  Function onTap;
+  MainHomeCategoryWidget({this.onTap,this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -609,7 +761,7 @@ class MainHomeCategoryWidget extends StatelessWidget {
       child: Card(
         color: Colors.white70,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.0)
+            borderRadius: BorderRadius.circular(12.0)
         ),
         child: Container(
           width: 100,

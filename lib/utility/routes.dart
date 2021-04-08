@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:social_media/utility/widget/bottomNavBar.dart';
 import 'package:social_media/views/article.dart';
 import 'package:social_media/views/auth/login_screen.dart';
 import 'package:social_media/views/gallery_screen.dart';
@@ -12,6 +13,7 @@ import 'package:social_media/views/messages.dart';
 import 'package:social_media/views/newScreens/community_sacreen64.dart';
 import 'package:social_media/views/newScreens/connect_sacreen54.dart';
 import 'package:social_media/views/newScreens/group_messahe31.dart';
+import 'package:social_media/views/newScreens/message_group.dart';
 import 'package:social_media/views/newScreens/new_groups27.dart';
 import 'package:social_media/views/newScreens/product_sacreen64.dart';
 import 'package:social_media/views/newScreens/search_sacreen41.dart';
@@ -34,11 +36,17 @@ import 'package:social_media/views/splash_screen.dart';
 import 'package:social_media/views/text_screen.dart';
 import 'package:social_media/views/truth.dart';
 
+import '../profile.dart';
+
 class Routers {
   static final route = [
     GetPage(
       name: '/homeView',
       page: () => Home(),
+    ),
+    GetPage(
+      name: '/bottomNavBar',
+      page: () => NavBar(),
     ),
      GetPage(
       name: '/newGroup27',
@@ -47,6 +55,10 @@ class Routers {
     GetPage(
       name: '/notificationsMessages',
       page: () => NotificationsMessages(),
+    ),
+    GetPage(
+      name: '/message_group',
+      page: () => MessageGroup(),
     ),
     GetPage(
       name: '/post_screen',
@@ -159,6 +171,10 @@ class Routers {
     GetPage(
       name: '/main_home',
       page: () => MainHomeScreen(),
+    ),
+    GetPage(
+      name: '/profile',
+      page: () => ProfileScreen(),
     ),
     GetPage(
       name: '/liveImage',

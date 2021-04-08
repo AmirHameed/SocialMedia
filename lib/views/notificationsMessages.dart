@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:social_media/utility/widget/bottomNavBar.dart';
 
 import 'messages.dart';
 
@@ -15,7 +16,10 @@ class NotificationsMessages extends StatelessWidget {
     Orientation orien = MediaQuery.of(context).orientation;
     bool screen = orien == Orientation.portrait ? true : false;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+      bottomNavigationBar: NavBar(),
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: Color(0xFFFFFFFF),
         leading: IconButton(
           icon: Icon(
@@ -66,7 +70,7 @@ class NotificationsMessages extends StatelessWidget {
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
                 onPressed: () {
-                  Get.toNamed('/messages');
+                  Get.toNamed('/message_group');
                 }
               ),
             ),
