@@ -74,7 +74,7 @@ class NewGroup extends StatelessWidget {
                           lightSource: LightSource.topLeft,
                           shape: NeumorphicShape.concave,
                           boxShape: NeumorphicBoxShape.roundRect(
-                              BorderRadius.circular(22)),
+                              BorderRadius.circular(20)),
                           color: Color(0xffDDDDDD)),
                       child: Row(
                         children: [
@@ -104,6 +104,7 @@ class NewGroup extends StatelessWidget {
                     ),
                   ),
                 ),
+
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 10),
                   child: SingleChildScrollView(
