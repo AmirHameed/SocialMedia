@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 
 import 'package:social_media/utility/constants.dart';
 import 'package:social_media/utility/widget/circle_theme.dart';
@@ -38,19 +39,6 @@ class _ConnectScreenState extends State<ConnectScreen>
     // detailerTabController = TabController(length: 3 ,vsync: this);
   }
 
-  // @override
-  // void initState() {
-  //   tabList.add(new Tab(text:'Overview',));
-  //   tabList.add(new Tab(text:'Workouts',));
-  //   _tabController = new TabController(vsync: this, length:
-  //   tabList.length);
-  //   super.initState();
-  // }
-  // @override
-  // void dispose() {
-  //   _tabController.dispose();
-  //   super.dispose();
-  // }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +56,7 @@ class _ConnectScreenState extends State<ConnectScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 20),
+                        padding: const EdgeInsets.only(top:10,left: 10, right: 20),
                         child: Container(
                           height: 30,
                           child: Neumorphic(
@@ -115,19 +103,25 @@ class _ConnectScreenState extends State<ConnectScreen>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           MainHomeCategoryWidget(
-                            onTap: () {},
+                            onTap: () {
+                              Get.offNamed('/searchScreen');
+                            },
                             image: 'assets/images/Group 1277.png',
                           ),
                           MainHomeCategoryWidget(
                             onTap: () {},
-                            image: 'assets/images/Group 3823.png',
+                            image: 'assets/images/contentred.png',
                           ),
                           MainHomeCategoryWidget(
-                            onTap: () {},
-                            image: 'assets/images/Group 3824.png',
+                            onTap: () {
+                              Get.offNamed('/communityScreen');
+                            },
+                            image: 'assets/images/comm.png',
                           ),
                           MainHomeCategoryWidget(
-                            onTap: () {},
+                            onTap: () {
+                              Get.offNamed('/productScreeen');
+                            },
                             image: 'assets/images/Group 563.png',
                           ),
                         ],
@@ -428,12 +422,6 @@ class _ConnectScreenState extends State<ConnectScreen>
       ),
     );
   }
-// Widget _getPage(Tab tab){
-//   switch(tab.text){
-//     // case 'Overview': return OverView();
-//     // case 'Orders': return Workouts();
-//   }
-// }
 }
 
 class MainHomeCategoryWidget extends StatelessWidget {

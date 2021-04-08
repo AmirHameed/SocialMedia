@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:get/get.dart';
 
 import 'package:social_media/utility/constants.dart';
 import 'package:social_media/utility/widget/circle_theme.dart';
 
-class ProductScreen extends StatefulWidget {
+class ProductScreenn extends StatefulWidget {
   @override
-  _ProductScreenState createState() => _ProductScreenState();
+  _ProductScreennState createState() => _ProductScreennState();
 }
 
-class _ProductScreenState extends State<ProductScreen>
+class _ProductScreennState extends State<ProductScreenn>
     with SingleTickerProviderStateMixin {
   double screenSize;
   double screenRatio;
@@ -26,19 +28,15 @@ class _ProductScreenState extends State<ProductScreen>
     // detailerTabController = TabController(length: 3 ,vsync: this);
   }
 
-  // @override
-  // void initState() {
-  //   tabList.add(new Tab(text:'Overview',));
-  //   tabList.add(new Tab(text:'Workouts',));
-  //   _tabController = new TabController(vsync: this, length:
-  //   tabList.length);
-  //   super.initState();
-  // }
-  // @override
-  // void dispose() {
-  //   _tabController.dispose();
-  //   super.dispose();
-  // }
+  List<String> imageList = [
+    'https://media.istockphoto.com/photos/woman-kayaking-in-fjord-in-norway-picture-id1059380230?b=1&k=6&m=1059380230&s=170667a&w=0&h=kA_A_XrhZJjw2bo5jIJ7089-VktFK0h0I4OWDqaac0c=',
+    'https://cdn.pixabay.com/photo/2017/02/12/10/29/christmas-2059698_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2020/01/29/17/09/snowboard-4803050_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2020/02/06/20/01/university-library-4825366_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2020/11/22/17/28/cat-5767334_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2020/12/13/16/22/snow-5828736_960_720.jpg',
+    'https://cdn.pixabay.com/photo/2020/12/09/09/27/women-5816861_960_720.jpg',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,7 +54,7 @@ class _ProductScreenState extends State<ProductScreen>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 20),
+                        padding: const EdgeInsets.only(top:10,left: 10, right: 20),
                         child: Container(
                           height: 30,
                           child: Neumorphic(
@@ -103,20 +101,26 @@ class _ProductScreenState extends State<ProductScreen>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           MainHomeCategoryWidget(
-                            onTap: () {},
+                            onTap: () {
+                              Get.offNamed('/searchScreen');
+                            },
                             image: 'assets/images/Group 1277.png',
                           ),
                           MainHomeCategoryWidget(
-                            onTap: () {},
-                            image: 'assets/images/Group 3823.png',
+                            onTap: () {
+                              Get.offNamed('/connectScreen');
+                            },
+                            image: 'assets/images/content.png',
+                          ),
+                          MainHomeCategoryWidget(
+                            onTap: () {
+                              Get.offNamed('/communityScreen');
+                            },
+                            image: 'assets/images/comm.png',
                           ),
                           MainHomeCategoryWidget(
                             onTap: () {},
-                            image: 'assets/images/Group 3824.png',
-                          ),
-                          MainHomeCategoryWidget(
-                            onTap: () {},
-                            image: 'assets/images/Group 563.png',
+                            image: 'assets/images/products.png',
                           ),
                         ],
                       ),
@@ -155,970 +159,317 @@ class _ProductScreenState extends State<ProductScreen>
                         child: TabBarView(
                           controller: tabController,
                           children: [
-                            Container(
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse 2.png',
-                                            text: 'MOOD',
-                                            width: width / 1.5,
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10, bottom: 10),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse 2.png',
+                                          text: 'MOOD',
+                                          width: width / 1.5,
+                                        ),
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse -2.png',
+                                          text: 'OUTER CIRCLE',
+                                          width: width / 2.5,
+                                        ),
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse -1.png',
+                                          text: 'UNIVERSE',
+                                          width: width / 2.5,
+                                        ),
+                                      ]),
+                                ),
+                                Container(
+                                  height: height / 1.5,
+                                  width: width,
+                                  child: StaggeredGridView.countBuilder(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 5,
+                                      mainAxisSpacing: 5,
+                                      itemCount: imageList.length,
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: new BorderRadius.all(
+                                                Radius.circular(15)),
+                                            image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                imageList[index],
+                                              ),
+                                            ),
                                           ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -2.png',
-                                            text: 'OUTER CIRCLE',
-                                            width: width / 2.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -1.png',
-                                            text: 'UNIVERSE',
-                                            width: width / 2.5,
-                                          ),
-                                        ]),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left:10,top: 10,right: 10,bottom: 5),
                                             child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
+                                                Neumorphic(
+                                                  padding: EdgeInsets.only(right: 4, bottom:4,top: 4, left: 4),
+                                                  style: NeumorphicStyle(
+                                                    color: Colors.grey.shade900,
+                                                    shape: NeumorphicShape.flat,
+                                                    boxShape: NeumorphicBoxShape.circle(),
                                                   ),
-                                                  onTap: () {
-
-                                                  },
+                                                  child: Text(
+                                                    '3.2',
+                                                    style: TextStyle(color: Colors.white,fontSize: 10),
+                                                  ),
                                                 ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
+                                                Align(
+                                                  alignment: Alignment.bottomLeft,
+                                                    child: Text('Rs 899',style: TextStyle(color: Colors.deepOrange,fontSize: 18,fontWeight: FontWeight.bold),overflow: TextOverflow.ellipsis,)),
                                               ],
                                             ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                          ),
+                                        );
+                                      },
+                                      staggeredTileBuilder: (index) {
+                                        return StaggeredTile.count(
+                                            1, index.isEven ? 1.2 : 1.8);
+                                      }),
+                                ),
+                              ],
                             ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse 2.png',
-                                            text: 'MOOD',
-                                            width: width / 1.5,
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10, bottom: 10),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse 2.png',
+                                          text: 'MOOD',
+                                          width: width / 1.5,
+                                        ),
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse -2.png',
+                                          text: 'OUTER CIRCLE',
+                                          width: width / 2.5,
+                                        ),
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse -1.png',
+                                          text: 'UNIVERSE',
+                                          width: width / 2.5,
+                                        ),
+                                      ]),
+                                ),
+                                Container(
+                                  height: height / 1.5,
+                                  width: width,
+                                  child: StaggeredGridView.countBuilder(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 5,
+                                      mainAxisSpacing: 5,
+                                      itemCount: imageList.length,
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: new BorderRadius.all(
+                                                Radius.circular(15)),
+                                            image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                imageList[index],
+                                              ),
+                                            ),
                                           ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -2.png',
-                                            text: 'OUTER CIRCLE',
-                                            width: width / 2.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -1.png',
-                                            text: 'UNIVERSE',
-                                            width: width / 2.5,
-                                          ),
-                                        ]),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left:10,top: 10,right: 10,bottom: 5),
                                             child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
+                                                Neumorphic(
+                                                  padding: EdgeInsets.only(right: 4, bottom:4,top: 4, left: 4),
+                                                  style: NeumorphicStyle(
+                                                    color: Colors.grey.shade900,
+                                                    shape: NeumorphicShape.flat,
+                                                    boxShape: NeumorphicBoxShape.circle(),
                                                   ),
-                                                  onTap: () {
-
-                                                  },
+                                                  child: Text(
+                                                    '3.2',
+                                                    style: TextStyle(color: Colors.white,fontSize: 10),
+                                                  ),
                                                 ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
+                                                Text('What an Event You Dessss',style: TextStyle(color: Colors.white,fontSize: 18,),overflow: TextOverflow.ellipsis,),
                                               ],
                                             ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                          ),
+                                        );
+                                      },
+                                      staggeredTileBuilder: (index) {
+                                        return StaggeredTile.count(
+                                            1, index.isEven ? 1.2 : 1.8);
+                                      }),
+                                ),
+                              ],
                             ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse 2.png',
-                                            text: 'MOOD',
-                                            width: width / 1.5,
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10, bottom: 10),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse 2.png',
+                                          text: 'MOOD',
+                                          width: width / 1.5,
+                                        ),
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse -2.png',
+                                          text: 'OUTER CIRCLE',
+                                          width: width / 2.5,
+                                        ),
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse -1.png',
+                                          text: 'UNIVERSE',
+                                          width: width / 2.5,
+                                        ),
+                                      ]),
+                                ),
+                                Container(
+                                  height: height / 1.5,
+                                  width: width,
+                                  child: StaggeredGridView.countBuilder(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 5,
+                                      mainAxisSpacing: 5,
+                                      itemCount: imageList.length,
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: new BorderRadius.all(
+                                                Radius.circular(15)),
+                                            image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                imageList[index],
+                                              ),
+                                            ),
                                           ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -2.png',
-                                            text: 'OUTER CIRCLE',
-                                            width: width / 2.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -1.png',
-                                            text: 'UNIVERSE',
-                                            width: width / 2.5,
-                                          ),
-                                        ]),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left:10,top: 10,right: 10,bottom: 5),
                                             child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
+                                                Neumorphic(
+                                                  padding: EdgeInsets.only(right: 4, bottom:4,top: 4, left: 4),
+                                                  style: NeumorphicStyle(
+                                                    color: Colors.grey.shade900,
+                                                    shape: NeumorphicShape.flat,
+                                                    boxShape: NeumorphicBoxShape.circle(),
                                                   ),
-                                                  onTap: () {
-
-                                                  },
+                                                  child: Text(
+                                                    '3.2',
+                                                    style: TextStyle(color: Colors.white,fontSize: 10),
+                                                  ),
                                                 ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
+                                                Text('What an Event You Dessss',style: TextStyle(color: Colors.white,fontSize: 18,),overflow: TextOverflow.ellipsis,),
                                               ],
                                             ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                          ),
+                                        );
+                                      },
+                                      staggeredTileBuilder: (index) {
+                                        return StaggeredTile.count(
+                                            1, index.isEven ? 1.2 : 1.8);
+                                      }),
+                                ),
+                              ],
                             ),
-                            Container(
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse 2.png',
-                                            text: 'MOOD',
-                                            width: width / 1.5,
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 10, bottom: 10),
+                                  child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse 2.png',
+                                          text: 'MOOD',
+                                          width: width / 1.5,
+                                        ),
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse -2.png',
+                                          text: 'OUTER CIRCLE',
+                                          width: width / 2.5,
+                                        ),
+                                        CircleTheme(
+                                          image: 'assets/images/Ellipse -1.png',
+                                          text: 'UNIVERSE',
+                                          width: width / 2.5,
+                                        ),
+                                      ]),
+                                ),
+                                Container(
+                                  height: height / 1.5,
+                                  width: width,
+                                  child: StaggeredGridView.countBuilder(
+                                      crossAxisCount: 2,
+                                      crossAxisSpacing: 5,
+                                      mainAxisSpacing: 5,
+                                      itemCount: imageList.length,
+                                      itemBuilder: (context, index) {
+                                        return Container(
+                                          decoration: BoxDecoration(
+                                            borderRadius: new BorderRadius.all(
+                                                Radius.circular(15)),
+                                            image: DecorationImage(
+                                              fit: BoxFit.fill,
+                                              image: NetworkImage(
+                                                imageList[index],
+                                              ),
+                                            ),
                                           ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -2.png',
-                                            text: 'OUTER CIRCLE',
-                                            width: width / 2.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -1.png',
-                                            text: 'UNIVERSE',
-                                            width: width / 2.5,
-                                          ),
-                                        ]),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(left:10,top: 10,right: 10,bottom: 5),
                                             child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
+                                                Neumorphic(
+                                                  padding: EdgeInsets.only(right: 4, bottom:4,top: 4, left: 4),
+                                                  style: NeumorphicStyle(
+                                                    color: Colors.grey.shade900,
+                                                    shape: NeumorphicShape.flat,
+                                                    boxShape: NeumorphicBoxShape.circle(),
                                                   ),
-                                                  onTap: () {
-
-                                                  },
+                                                  child: Text(
+                                                    '3.2',
+                                                    style: TextStyle(color: Colors.white,fontSize: 10),
+                                                  ),
                                                 ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
+                                                Text('What an Event You Dessss',style: TextStyle(color: Colors.white,fontSize: 18,),overflow: TextOverflow.ellipsis,),
                                               ],
                                             ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.horizontal,
-                                      child: Row(
-                                        children: List.generate(3, (index) {
-                                          return Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        }),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                          ),
+                                        );
+                                      },
+                                      staggeredTileBuilder: (index) {
+                                        return StaggeredTile.count(
+                                            1, index.isEven ? 1.2 : 1.8);
+                                      }),
+                                ),
+                              ],
                             ),
+
                           ],
                         ),
                       )

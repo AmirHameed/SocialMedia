@@ -111,23 +111,23 @@ class _SearchScreenState extends State<SearchScreen>
                           MainHomeCategoryWidget(
                             onTap: () {
                             },
-                            image: 'assets/images/Group 1277.png',
+                            image: 'assets/images/people.png',
                           ),
                           MainHomeCategoryWidget(
                             onTap: () {
-                              Get.toNamed('/connectScreen');
+                              Get.offNamed('/connectScreen');
                             },
-                            image: 'assets/images/Group 3823.png',
+                            image: 'assets/images/content.png',
                           ),
                           MainHomeCategoryWidget(
                             onTap: () {
-                              Get.toNamed('/communityScreen');
+                              Get.offNamed('/communityScreen');
                             },
-                            image: 'assets/images/Group 3824.png',
+                            image: 'assets/images/comm.png',
                           ),
                           MainHomeCategoryWidget(
                             onTap: () {
-                              Get.toNamed('/productScreen');
+                              Get.offNamed('/productScreeen');
                             },
                             image: 'assets/images/Group 563.png',
                           ),

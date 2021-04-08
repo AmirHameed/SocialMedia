@@ -13,6 +13,7 @@ import 'package:social_media/views/newScreens/community_sacreen64.dart';
 import 'package:social_media/views/newScreens/connect_sacreen54.dart';
 import 'package:social_media/views/newScreens/group_messahe31.dart';
 import 'package:social_media/views/newScreens/new_groups27.dart';
+import 'package:social_media/views/newScreens/product_sacreen64.dart';
 import 'package:social_media/views/newScreens/search_sacreen41.dart';
 import 'package:social_media/views/new_group_screen.dart';
 import 'package:social_media/views/next_screen.dart';
@@ -111,8 +112,8 @@ class Routers {
       page: () => CommunityScreen(),
     ),
     GetPage(
-      name: '/productScreen',
-      page: () => ProductScreen(),
+      name: '/productScreeen',
+      page: () => ProductScreenn(),
     ),
     GetPage(
       name: '/group',
