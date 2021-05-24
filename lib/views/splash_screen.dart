@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
     return AnimatedSplashScreen(
       splash: 'assets/images/splash.png',
       splashIconSize: 400,
-      nextScreen: OnBoardingPage(),
+      nextScreen: OnBoardPage(),
       duration: 0,
       splashTransition: SplashTransition.scaleTransition,
       animationDuration: Duration(milliseconds: 800),

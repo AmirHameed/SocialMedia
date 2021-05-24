@@ -149,7 +149,7 @@ class Routers {
     ),
     GetPage(
       name: '/onBoarding_screen',
-      page: () => OnBoardingPage(),
+      page: () => OnBoardPage(),
     ),
     GetPage(
       name: '/sell_screen',

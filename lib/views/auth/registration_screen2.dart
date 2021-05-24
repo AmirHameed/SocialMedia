@@ -91,7 +91,7 @@ class _RegistrationScreenTwoState extends State<RegistrationScreenTwo> {
                           activeTrackColor: Colors.white,
                           activeColor: Colors.green,
                         ),
-                        Text('I accept all the terms and conditions'),
+                        Text('I accept all the \n terms and conditions'),
 
                       ],
                     ),
