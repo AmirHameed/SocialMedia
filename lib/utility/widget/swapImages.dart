@@ -1,18 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:get/get.dart';
-import 'package:social_media/controllers/sliderController.dart';
+import 'package:social_media/controllers/swapController.dart';
 import 'package:social_media/utility/widget/slider.dart';
-
 import 'addIcon.dart';
-class mainPost extends StatelessWidget {
 
+// ignore: must_be_immutable
+class SwapImages extends StatefulWidget {
+  @override
+  _SwapImagesState createState() => _SwapImagesState();
+}
+
+class _SwapImagesState extends State<SwapImages> {
+  SwapController swapController = Get.put(SwapController());
+  final controller = PageController();
   double _lowerValue = 50;
-  Function onPressed;
-  String image;
-  mainPost({this.image,this.onPressed});
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -88,13 +92,13 @@ class mainPost extends StatelessWidget {
                 Row(
                   children: [
                     AddIcon(),
-                //     NeumorphicIcon(
-                //       Icons.add_circle,
-                //       size: 30,
-                //       style: NeumorphicStyle(
-                //   color: Color(0xFFFFFFFF),
-                // ),
-                //     ),
+                    //     NeumorphicIcon(
+                    //       Icons.add_circle,
+                    //       size: 30,
+                    //       style: NeumorphicStyle(
+                    //   color: Color(0xFFFFFFFF),
+                    // ),
+                    //     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 5),
                       child: Image.asset(
@@ -118,30 +122,55 @@ class mainPost extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10),
               child: Row(children: [
                 Expanded(
-                  flex:5,
+                    flex:5,
                     child: Text('Good work guys! I remember the t', style:TextStyle(fontSize: 18,color: Colors.black,),overflow: TextOverflow.ellipsis,maxLines: 1,)),
                 Expanded(
                   flex:2,
                   child: InkWell(
                       onTap: (){
-                       Get.toNamed('/seeMore');
+                        Get.toNamed('/seeMore');
                       },
                       child: Text('see more', style:  TextStyle(fontSize: 18,color: Colors.black,fontWeight: FontWeight.w700),)),),
               ],),
             ),
-
-            Padding(
+            // PageView.builder(
+            //     controller: controller,
+            //     itemCount: 3,
+            //     itemBuilder: (BuildContext context,int index){
+            //   return InkWell(
+            //       child:
+            //      index == 0 ?
+            //      Image.asset('assets/images/flower.png'):
+            //          index == 1 ?
+            //          Image.asset('assets/images/shahrukh.png') :
+            //              index == 2 ?
+            //              Image.asset('assets/images/working-women-getty.png') :
+            //              Container(),
+            //   onTap: (){
+            //     controller.nextPage(curve: Curves.ease, duration: Duration(milliseconds: 300));
+            //   }
+            //   );
+            // }
+            // ),
+            GetBuilder<SwapController>(builder: ((_) => Padding(
               padding: const EdgeInsets.only(top: 5),
               child: InkWell(
-                  onTap: onPressed,
-                  child: Image.asset(image,width: width,height: height/2.1,fit: BoxFit.cover,)),
-            ),
+                  onTap: (){
+                    setState(() {
+                      swapController.image = swapController.imageLeft;
+                    });
+                  },
+                  // child: Image.asset(swapController.image,width: width,height: height/2.1,fit: BoxFit.cover,),
+                child: swapController.image,
+              ),
+            )),),
             Padding(
               padding: const EdgeInsets.only(top: 10,bottom: 5,right: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(children: [
+                  Row(
+                    children: [
                     Row(
                       children: [
                         Image.asset(

@@ -1,13 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:social_media/utility/widget/addIcon.dart';
 import 'package:social_media/utility/widget/bottomNavBar.dart';
+import 'package:social_media/utility/widget/notiWidget.dart';
 
 import 'messages.dart';
 
-class NotificationsMessages extends StatelessWidget {
+class NotificationsMessages extends StatefulWidget {
+  @override
+  _NotificationsMessagesState createState() => _NotificationsMessagesState();
+}
+
+class _NotificationsMessagesState extends State<NotificationsMessages> {
   bool check = false;
   bool cancel = false;
+  List<String> listItems = [
+    "1",
+    "2"
+  ];
+  final items = List<String>();
+  void deleteItem(index) {
+    setState(() {
+      listItems.removeAt(index);
+    });
+  }
+  void undoDeletion(index, item) {
+    setState(() {
+      listItems.insert(index, item);
+    });
+  }
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -30,52 +52,113 @@ class NotificationsMessages extends StatelessWidget {
             Get.back();
           },
         ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        title: Stack(
           children: [
             Neumorphic(
               style: NeumorphicStyle(
-                  shape: NeumorphicShape.concave,
-                  boxShape:
-                      NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
-                  depth: 12,
-                  lightSource: LightSource.topLeft,
-                  color: Color(0xFFFFFFFF)),
-              child: NeumorphicButton(
-                style: NeumorphicStyle(
-                  color: Color(0xFFFFFFFF),
-                ),
-                child: Text(
-                  'Notification',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                // shape: NeumorphicShape.concave,
+                boxShape:
+                NeumorphicBoxShape.roundRect(BorderRadius.circular(36)),
+                depth: -5,
+                // lightSource: LightSource.topLeft,
+                color: Color(0xFFFFFFFF),
+              ),
+              child: Container(
+                padding: const EdgeInsets.only(top: 10,bottom: 0,right: 30,left: 150),
+                child: GestureDetector(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20,bottom: 10),
+                    child: Text("Messages",
+                      style: TextStyle(
+                          color: Colors.grey[400],fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  onTap: (){
+                    Get.toNamed('/message_group');
+                  },
                 ),
               ),
             ),
-            Neumorphic(
+            Positioned(
+              top: 0,
+              child: Neumorphic(
               style: NeumorphicStyle(
-                  shape: NeumorphicShape.concave,
+                // shape: NeumorphicShape.concave,
                   boxShape:
-                      NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
-                  depth: 12,
-                  lightSource: LightSource.topLeft,
+                  NeumorphicBoxShape.roundRect(BorderRadius.circular(36)),
+                  // depth: 80,
+                  // lightSource: LightSource.topLeft,
                   color: Color(0xFFFFFFFF)),
               child: NeumorphicButton(
                 style: NeumorphicStyle(
                   color: Color(0xFFFFFFFF),
                 ),
                 child: Text(
-                  'Messages',
+                  '  Notification  ',
                   style: TextStyle(
                       color: Colors.black, fontWeight: FontWeight.bold),
                 ),
-                onPressed: () {
-                  Get.toNamed('/message_group');
-                }
               ),
-            ),
+            ),)
           ],
         ),
+        // title: Neumorphic(
+        //   style: NeumorphicStyle(
+        //       // shape: NeumorphicShape.concave,
+        //       boxShape:
+        //       NeumorphicBoxShape.roundRect(BorderRadius.circular(36)),
+        //       depth: -3,
+        //       // lightSource: LightSource.topLeft,
+        //       color: Color(0xFFFFFFFF),
+        //   ),
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: [
+        //       Neumorphic(
+        //         style: NeumorphicStyle(
+        //             // shape: NeumorphicShape.concave,
+        //             boxShape:
+        //                 NeumorphicBoxShape.roundRect(BorderRadius.circular(36)),
+        //             depth: 80,
+        //             // lightSource: LightSource.topLeft,
+        //             color: Color(0xFFFFFFFF)),
+        //         child: NeumorphicButton(
+        //           style: NeumorphicStyle(
+        //             color: Color(0xFFFFFFFF),
+        //           ),
+        //           child: Text(
+        //             '  Notification  ',
+        //             style: TextStyle(
+        //                 color: Colors.black, fontWeight: FontWeight.bold),
+        //           ),
+        //         ),
+        //       ),
+        //       Neumorphic(
+        //         // style: NeumorphicStyle(
+        //         //     // shape: NeumorphicShape.concave,
+        //         //     boxShape:
+        //         //         NeumorphicBoxShape.roundRect(BorderRadius.only(topRight: Radius.circular(36),bottomRight: Radius.circular(36))),
+        //         //     depth: -36,
+        //         //     // lightSource: LightSource.topLeft,
+        //         //     color: Color(0xFFFFFFFF),
+        //         // ),
+        //         child: NeumorphicButton(
+        //           style: NeumorphicStyle(
+        //             color: Color(0xFFFFFFFF),
+        //           ),
+        //           child: Text(
+        //             'Messages',
+        //             style: TextStyle(
+        //                 color: Colors.black, fontWeight: FontWeight.bold),
+        //           ),
+        //           onPressed: (){
+        //             Get.toNamed('/message_group');
+        //           },
+        //         ),
+        //       ),
+        //     ],
+        //   ),
+        // ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -106,10 +189,10 @@ class NotificationsMessages extends StatelessWidget {
                               shape: NeumorphicShape.concave,
                               boxShape: NeumorphicBoxShape.roundRect(
                                   BorderRadius.circular(38)),
-                              // depth: 8,
-                              intensity: 5,
+                              depth: 2.5,
+                              // intensity: 1,
                               lightSource: LightSource.left,
-                               color:Color(0xFFFFFFFF),
+                              color:Color(0xFFFFFFFF),
                             ),
                             child: Container(
                               padding: const EdgeInsets.only(bottom: 10),
@@ -152,9 +235,12 @@ class NotificationsMessages extends StatelessWidget {
                                           '114 others also vibed on your post',
                                           style: TextStyle(color: Colors.grey),
                                         ),
-                                        Text(
-                                          '3 min ago',
-                                          style: TextStyle(color: Colors.grey),
+                                        Padding(
+                                          padding: const EdgeInsets.only(top: 5),
+                                          child: Text(
+                                            '3 min ago',
+                                            style: TextStyle(color: Colors.grey,fontSize: 10),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -165,9 +251,15 @@ class NotificationsMessages extends StatelessWidget {
                                         '3.2',
                                         style: TextStyle(fontSize: 10),
                                       ),
-                                      Image.asset(
-                                        'assets/images/Ellipse 313.png',
-                                        // height: 40,
+                                      Container(
+                                        margin: const EdgeInsets.only(right: 5,left: 3),
+                                        height: 25,
+                                        width: 25,
+                                        color: Colors.red,
+                                        child: Image.asset(
+                                          'assets/images/Ellipse 313.png',
+                                          // height: 40,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -178,167 +270,278 @@ class NotificationsMessages extends StatelessWidget {
                     }),
                   ),
                 ),
-                Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10,bottom: 10),
-                      child: Neumorphic(
-                          style: NeumorphicStyle(
-                            shape: NeumorphicShape.concave,
-                            boxShape: NeumorphicBoxShape.roundRect(
-                                BorderRadius.circular(38)),
-                            // depth: 8,
-                            intensity: 5,
-                            lightSource: LightSource.left,
-                            color: Color(0xFFFFFFFF)
-                          ),
-                          child: Container(
-                            padding: const EdgeInsets.only(bottom: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Column(
+                // Column(
+                //   children: [
+                //     Padding(
+                //       padding: const EdgeInsets.only(top: 10,bottom: 10),
+                //       child: Neumorphic(
+                //           style: NeumorphicStyle(
+                //             shape: NeumorphicShape.concave,
+                //             boxShape: NeumorphicBoxShape.roundRect(
+                //                 BorderRadius.circular(38)),
+                //             depth: 2.5,
+                //             // intensity: 1,
+                //             lightSource: LightSource.left,
+                //             color:Color(0xFFFFFFFF),
+                //           ),
+                //           child: Container(
+                //             padding: const EdgeInsets.only(bottom: 10),
+                //             child: Row(
+                //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //               children: [
+                //                 Column(
+                //                   children: [
+                //                     Text(
+                //                       '3.2',
+                //                       style: TextStyle(fontSize: 10),
+                //                     ),
+                //                     Image.asset(
+                //                       'assets/images/Ellipse 311.png',
+                //                       // height: 40,
+                //                     ),
+                //                   ],
+                //                 ),
+                //                 Padding(
+                //                   padding: const EdgeInsets.only(top: 10),
+                //                   child: Column(
+                //                     crossAxisAlignment: CrossAxisAlignment.start,
+                //                     children: [
+                //                       Row(
+                //                         children: [
+                //                           Text(
+                //                             'Nick Collins',
+                //                             style: TextStyle(
+                //                                 fontWeight: FontWeight.bold),
+                //                           ),
+                //                           Text(
+                //                             '   "cute 3.5"',
+                //                             style: TextStyle(
+                //                                 fontWeight: FontWeight.bold,
+                //                                 color: Colors.red),
+                //                           ),
+                //                         ],
+                //                       ),
+                //                       Text(
+                //                         '114 others also vibed on your post',
+                //                         style: TextStyle(color: Colors.grey,fontSize: width/30),
+                //                       ),
+                //                       Text(
+                //                         '3 min ago',
+                //                         style: TextStyle(color: Colors.grey,fontSize: 10),
+                //                       ),
+                //                     ],
+                //                   ),
+                //                 ),
+                //                 Row(
+                //                   children: [
+                //                     CrossIcon(),
+                //                    SizedBox(width: 5,),
+                //                    TickIcon(),
+                //                   ],
+                //                 ),
+                //               ],
+                //             ),
+                //           )),
+                //     ),
+                //   ],
+                // ),
+                Container(
+                  height: 110,
+                  width: width,
+                  child: ListView.builder(
+                    itemCount: 2,
+                    itemBuilder: (context, index){
+                      return  Dismissible(
+                        background: stackBehindDismiss(),
+                        key: ObjectKey(listItems[index]),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 10,bottom: 10),
+                          child: Neumorphic(
+                              style: NeumorphicStyle(
+                                shape: NeumorphicShape.concave,
+                                boxShape: NeumorphicBoxShape.roundRect(
+                                    BorderRadius.circular(38)),
+                                depth: 2.5,
+                                // intensity: 1,
+                                lightSource: LightSource.left,
+                                color:Color(0xFFFFFFFF),
+                              ),
+                              child: Container(
+                                width: width,
+                                padding: const EdgeInsets.only(bottom: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(
-                                      '3.2',
-                                      style: TextStyle(fontSize: 10),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          '3.2',
+                                          style: TextStyle(fontSize: 10),
+                                        ),
+                                        Image.asset(
+                                          'assets/images/Ellipse 311.png',
+                                          // height: 40,
+                                        ),
+                                      ],
                                     ),
-                                    Image.asset(
-                                      'assets/images/Ellipse 311.png',
-                                      // height: 40,
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 10),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            'Nick Collins',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold),
+                                          Row(
+                                            children: [
+                                              Text(
+                                                'Nick Collins',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold),
+                                              ),
+                                              Text(
+                                                '   "cute 3.5"',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.red),
+                                              ),
+                                            ],
                                           ),
                                           Text(
-                                            '   "cute 3.5"',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.red),
+                                            '114 others also vibed \n on your post',
+                                            style: TextStyle(color: Colors.grey),
+                                          ),
+                                          Text(
+                                            '3 min ago',
+                                            style: TextStyle(color: Colors.grey,fontSize: 10),
                                           ),
                                         ],
                                       ),
-                                      Text(
-                                        '114 others also vibed on your post',
-                                        style: TextStyle(color: Colors.grey,fontSize: width/30),
-                                      ),
-                                      Text(
-                                        '3 min ago',
-                                        style: TextStyle(color: Colors.grey),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Row(
-                                  children: [
-                                    InkWell(
-                                      child: Image.asset('assets/images/cancel.png',height: 40,width: 40,),
-                                      onTap: (){},
                                     ),
-                                    InkWell(
-                                      child: Image.asset('assets/images/check.png',height: 30,width: 30,),
-                                      onTap: (){
-                                        setState(){
-                                          check = true;
-                                        }
-                                      },
+                                    Row(
+                                      children: [
+                                        CrossIcon(),
+                                        SizedBox(width: 5,),
+                                        TickIcon(),
+                                      ],
                                     ),
                                   ],
                                 ),
-                              ],
-                            ),
-                          )),
-                    ),
-                  ],
+                              )),
+                        ),
+                        onDismissed: (direction) {
+                          var item = listItems.elementAt(index);
+                          //To delete
+                          deleteItem(index);
+                          //To show a snackbar with the UNDO button
+                          Scaffold.of(context).showSnackBar(SnackBar(
+                              content: Text("Item deleted"),
+                              action: SnackBarAction(
+                                  label: "UNDO",
+                                  onPressed: () {
+                                    //To undo deletion
+                                    undoDeletion(index, item);
+                                  })));
+                        },
+                      );
+                    },
+                  ),
                 ),
+
                 check == true ?
-                Padding(
-                  padding: const EdgeInsets.only(top: 10,bottom: 10),
-                  child: Neumorphic(
-                      style: NeumorphicStyle(
-                        shape: NeumorphicShape.concave,
-                        boxShape: NeumorphicBoxShape.roundRect(
-                            BorderRadius.circular(38)),
-                        // depth: 8,
-                        intensity: 5,
-                        lightSource: LightSource.left,
-                       color: Color(0xFFFFFFFF)
-                      ),
-                      child: Container(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  '3.2',
-                                  style: TextStyle(fontSize: 10),
+                    ListView.builder(
+                      itemCount: 1,
+                      itemBuilder: (context, index){
+                        final item = items[index];
+                        return  Dismissible(
+                          background: stackBehindDismiss(),
+                          key: Key(item),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 10,bottom: 10),
+                            child: Neumorphic(
+                                style: NeumorphicStyle(
+                                  shape: NeumorphicShape.concave,
+                                  boxShape: NeumorphicBoxShape.roundRect(
+                                      BorderRadius.circular(38)),
+                                  depth: 2.5,
+                                  // intensity: 1,
+                                  lightSource: LightSource.left,
+                                  color:Color(0xFFFFFFFF),
                                 ),
-                                Image.asset(
-                                  'assets/images/Ellipse 311.png',
-                                  // height: 40,
-                                ),
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
+                                child: Container(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Text(
-                                        'Nick Collins',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                      Column(
+                                        children: [
+                                          Text(
+                                            '3.2',
+                                            style: TextStyle(fontSize: 10),
+                                          ),
+                                          Image.asset(
+                                            'assets/images/Ellipse 311.png',
+                                            // height: 40,
+                                          ),
+                                        ],
                                       ),
-                                      Text(
-                                        '   "cute 3.5"',
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.red),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 10),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  'Nick Collins',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                                Text(
+                                                  '   "cute 3.5"',
+                                                  style: TextStyle(
+                                                      fontWeight: FontWeight.bold,
+                                                      color: Colors.red),
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              '114 others also vibed on your post',
+                                              style: TextStyle(color: Colors.grey),
+                                            ),
+                                            Text(
+                                              '3 min ago',
+                                              style: TextStyle(color: Colors.grey,fontSize: 10),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          CrossIcon(),
+                                          SizedBox(width: 5,),
+                                          TickIcon(),
+                                        ],
                                       ),
                                     ],
                                   ),
-                                  Text(
-                                    '114 others also vibed on your post',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                  Text(
-                                    '3 min ago',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                InkWell(
-                                  child: Image.asset('assets/images/cancel.png',height: 40,),
-                                  onTap: (){},
-                                ),
-                                InkWell(
-                                  child: Image.asset('assets/images/check.png',height: 30,),
-                                  onTap: (){},
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      )),
-                ) : Container(),
+                                )),
+                          ),
+                          onDismissed: (direction) {
+                            var item = items.elementAt(index);
+                            //To delete
+                            deleteItem(index);
+                            //To show a snackbar with the UNDO button
+                            Scaffold.of(context).showSnackBar(SnackBar(
+                                content: Text("Item deleted"),
+                                action: SnackBarAction(
+                                    label: "UNDO",
+                                    onPressed: () {
+                                      //To undo deletion
+                                      undoDeletion(index, item);
+                                    })));
+                          },
+                        );
+                      },
+                    )
+                : Container(),
 
                 Padding(
                   padding: const EdgeInsets.only(top: 10, bottom: 5),
@@ -360,10 +563,10 @@ class NotificationsMessages extends StatelessWidget {
                             shape: NeumorphicShape.concave,
                             boxShape: NeumorphicBoxShape.roundRect(
                                 BorderRadius.circular(38)),
-                            // depth: 8,
-                            intensity: 5,
+                            depth: 2.5,
+                            // intensity: 1,
                             lightSource: LightSource.left,
-                           color: Color(0xFFFFFFFF)
+                            color:Color(0xFFFFFFFF),
                           ),
                           child: Container(
                             padding: const EdgeInsets.only(bottom: 10),
@@ -408,7 +611,7 @@ class NotificationsMessages extends StatelessWidget {
                                       ),
                                       Text(
                                         '3 min ago',
-                                        style: TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey,fontSize: 10),
                                       ),
                                     ],
                                   ),
@@ -430,16 +633,16 @@ class NotificationsMessages extends StatelessWidget {
                           )),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 20),
+                      padding: const EdgeInsets.only(top: 20,bottom: 20),
                       child: Neumorphic(
                           style: NeumorphicStyle(
                             shape: NeumorphicShape.concave,
                             boxShape: NeumorphicBoxShape.roundRect(
                                 BorderRadius.circular(38)),
-                            // depth: 8,
-                            intensity: 5,
+                            depth: 2.5,
+                            // intensity: 1,
                             lightSource: LightSource.left,
-                           color: Color(0xFFFFFFFF)
+                            color:Color(0xFFFFFFFF),
                           ),
                           child: Container(
                             padding: const EdgeInsets.only(bottom: 10),
@@ -484,21 +687,16 @@ class NotificationsMessages extends StatelessWidget {
                                       ),
                                       Text(
                                         '3 min ago',
-                                        style: TextStyle(color: Colors.grey),
+                                        style: TextStyle(color: Colors.grey,fontSize: 10),
                                       ),
                                     ],
                                   ),
                                 ),
                                 Row(
                                   children: [
-                                    InkWell(
-                                      child: Image.asset('assets/images/cancel.png',height: 40,),
-                                      onTap: (){},
-                                    ),
-                                    InkWell(
-                                      child: Image.asset('assets/images/check.png',height: 30,),
-                                      onTap: (){},
-                                    ),
+                                    EditIcon(),
+                                    SizedBox(width: 5,),
+                                    TickIcon(),
                                   ],
                                 ),
                               ],
@@ -514,4 +712,22 @@ class NotificationsMessages extends StatelessWidget {
       ),
     );
   }
+}
+Widget stackBehindDismiss() {
+  return Container(
+    alignment: Alignment.centerRight,
+    // padding: EdgeInsets.only(right: 20.0),
+    // color: Colors.red,
+    child:Neumorphic(
+      style: NeumorphicStyle(
+        color: Color(0xFFFFFFFF),
+        boxShape: NeumorphicBoxShape.circle(),
+      ),
+      padding: const EdgeInsets.all(12.0),
+      child: Icon(
+        Icons.delete,
+        color: Colors.red,
+      ),
+    ),
+  );
 }

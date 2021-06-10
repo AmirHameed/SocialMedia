@@ -9,6 +9,8 @@ import 'package:social_media/utility/widget/bottomNavBar.dart';
 import 'package:social_media/utility/widget/profile_navBar.dart';
 import 'package:social_media/views/review_screens/group.dart';
 
+import 'utility/widget/slider.dart';
+
 class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
@@ -90,7 +92,7 @@ bool diary = false;
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 15,left: 15,right: 15),
+                      padding: const EdgeInsets.only(top: 15,left: 3,right: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -118,25 +120,22 @@ bool diary = false;
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 5),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Praveen Mishra',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                                    Text('@praveenmishra880',style: TextStyle(color: Colors.grey),),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 10,bottom: 40),
-                                      child: Text('Do it with little ooumph'),
-                                    ),
-                                  ],
-                                ),
-                                // Container(height: 70,),
-                              ],
-                            ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Praveen Mishra',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                  Text('@praveenmishra880',style: TextStyle(color: Colors.grey),),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10,bottom: 40),
+                                    child: Text('Do it with little ooumph'),
+                                  ),
+                                ],
+                              ),
+                              // Container(height: 70,),
+                            ],
                           ),
                           // Container(width: 30,),
                           Column(
@@ -222,7 +221,7 @@ bool diary = false;
                           ),
                           Positioned(
                             top: 0,
-                            right: 10,
+                            right: 30,
                             bottom: 0,
                             left: 80,
                             child:  Column(
@@ -246,7 +245,7 @@ bool diary = false;
                           ),
                           Positioned(
                             top: 0,
-                            right: 10,
+                            right: 50,
                             bottom: 0,
                             left: -20,
                             child:  Column(
@@ -293,13 +292,8 @@ bool diary = false;
                             Colors.green,
                             Colors.yellow,
                             Colors.purple
-                          ], stops: [
-                            0.8,
-                            0.96,
-                            0.74,
-                            0.22,
-                            0.85
-                          ], startAngle: 0.5, endAngle: 1),
+                          ],
+                          ),
                         ),
                       ),
                       values: [10],
@@ -319,15 +313,18 @@ bool diary = false;
                       onDragging: (handlerIndex, lowerValue, upperValue) {
                         _lowerValue = lowerValue;
                       },
+                      handlerWidth: 100,
                       handler: FlutterSliderHandler(
                         // decoration: BoxDecoration(),
-
+                        decoration: BoxDecoration(
+                            color: Colors.transparent
+                        ),
                         child: Row(
                           children: [
-                            // Image.asset('assets/images/leftBrackets.png'),
+                            Image.asset('assets/images/leftBrackets.png',height: 20,color: Colors.grey,),
                             Image.asset(
-                                'assets/images/NoPath - Copy (28).png'),
-                            // Image.asset('assets/images/rightBrackets.png'),
+                              'assets/images/NoPath - Copy (28).png',height: 23,),
+                            Image.asset('assets/images/rightBrackets.png',height: 20,color: Colors.grey,),
                           ],
                         ),
                       ),

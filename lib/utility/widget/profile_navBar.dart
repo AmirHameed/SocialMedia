@@ -117,8 +117,9 @@ class ProfileNavBar extends StatelessWidget {
                 onPressed: () {
                   // Get.offNamed('/homeView');
                 },
-                icon: Image.asset(
+                icon:  Image.asset(
                   'assets/images/home (1).png',
+                  height: 20,
                 ),
               ),
               label: ''),

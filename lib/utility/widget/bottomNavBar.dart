@@ -16,8 +16,8 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      double width = MediaQuery.of(context).size.width;
-      double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return BottomNavigationBar(
         backgroundColor: Color(0xFFFFFFFF),
         currentIndex: currentIndex,
@@ -31,6 +31,7 @@ class NavBar extends StatelessWidget {
                 },
                 icon: Image.asset(
                   'assets/images/home (1).png',
+                  height: 20,
                 ),
               ),
               label: ''),
@@ -48,7 +49,7 @@ class NavBar extends StatelessWidget {
           BottomNavigationBarItem(
               icon: NeumorphicButton(
                 onPressed: () {
-                 Get.toNamed('/post_screen');
+                  Get.toNamed('/post_screen');
                 },
                 style: NeumorphicStyle(
                   shape: NeumorphicShape.concave,
@@ -57,8 +58,8 @@ class NavBar extends StatelessWidget {
                 ),
                 child: Image.asset(
                   'assets/images/Group 2133.png',
-                  height: height/28,
-                  width: width/18,
+                  height: height / 28,
+                  width: width / 18,
                 ),
               ),
               label: ''),
@@ -71,29 +72,28 @@ class NavBar extends StatelessWidget {
                 icon: Image.asset(
                   'assets/images/Group 2134.png',
                 ),
-                iconSize: width/12,
+                iconSize: width / 12,
               ),
               label: ''),
           BottomNavigationBarItem(
-
-              icon:   InkWell(
-                onTap: (){
-                    Get.toNamed('/profile');
-
+              icon: InkWell(
+                onTap: () {
+                  Get.toNamed('/profile');
                 },
                 child: Container(
                   margin: EdgeInsets.only(right: 2),
                   //padding: EdgeInsets.symmetric(horizontal: 6),
-                  width: width/5,
-                  height: height/20,
+                  width: width / 5,
+                  height: height / 20,
                   child: Neumorphic(
                     style: NeumorphicStyle(
-                        shape: NeumorphicShape.concave,
-                        depth: 5,
-                        boxShape:
-                        NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
-                        lightSource: LightSource.topLeft,
-                        color:  Color(0xFFFFFFFF),),
+                      shape: NeumorphicShape.concave,
+                      depth: 5,
+                      boxShape: NeumorphicBoxShape.roundRect(
+                          BorderRadius.circular(16)),
+                      lightSource: LightSource.topLeft,
+                      color: Color(0xFFFFFFFF),
+                    ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -103,22 +103,21 @@ class NavBar extends StatelessWidget {
                             'Repo \n 999',
                             style: TextStyle(
                               color: Colors.orange,
-                              fontSize: width/35,
+                              fontSize: width / 35,
                             ),
                             textAlign: TextAlign.center,
                           ),
                         ),
                         CircleAvatar(
-                          radius: width/21,
+                          radius: width / 21,
                           backgroundColor: Colors.transparent,
                           child: ClipOval(
                               child: Image.asset(
-                                'assets/images/Ellipse 311.png',
-                                width: width/10,
-                                fit: BoxFit.cover,
-                              )),
+                            'assets/images/Ellipse 311.png',
+                            width: width / 10,
+                            fit: BoxFit.cover,
+                          )),
                         ),
-
                       ],
                     ),
                   ),

@@ -32,50 +32,63 @@ class _MessageGroupState extends State<MessageGroup> with SingleTickerProviderSt
       appBar: AppBar(
         backgroundColor: Color(0xFFFFFFFF),
         elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.grey[400],
+          ),
+          onPressed: (){
+            Get.back();
+          },
+        ),
+        title: Stack(
           children: [
             Neumorphic(
               style: NeumorphicStyle(
-                  shape: NeumorphicShape.concave,
-                  boxShape:
-                  NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
-                  depth: 12,
-                  lightSource: LightSource.topLeft,
-                  color: Color(0xFFFFFFFF)),
-              child: NeumorphicButton(
-                style: NeumorphicStyle(
-                  color: Color(0xFFFFFFFF),
-                ),
-                child: Text(
-                  'Notification',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
+                // shape: NeumorphicShape.concave,
+                boxShape:
+                NeumorphicBoxShape.roundRect(BorderRadius.circular(36)),
+                depth: -5,
+                // lightSource: LightSource.topLeft,
+                color: Color(0xFFFFFFFF),
+              ),
+              child: Container(
+                padding: const EdgeInsets.only(top: 10,bottom: 0,left: 10,right: 150),
+                child: GestureDetector(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20,bottom: 10),
+                    child: Text("Notifications",
+                      style: TextStyle(
+                          color: Colors.grey[400],fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  onTap: (){
+                    Get.toNamed('/notificationsMessages');
+                  },
                 ),
               ),
             ),
-            Neumorphic(
-              style: NeumorphicStyle(
-                  shape: NeumorphicShape.concave,
-                  boxShape:
-                  NeumorphicBoxShape.roundRect(BorderRadius.circular(16)),
-                  depth: 12,
-                  lightSource: LightSource.topLeft,
-                  color: Color(0xFFFFFFFF)),
-              child: NeumorphicButton(
+            Positioned(
+              right: 0,
+              child: Neumorphic(
+                style: NeumorphicStyle(
+                  // shape: NeumorphicShape.concave,
+                    boxShape:
+                    NeumorphicBoxShape.roundRect(BorderRadius.circular(36)),
+                    // depth: 80,
+                    // lightSource: LightSource.topLeft,
+                    color: Color(0xFFFFFFFF)),
+                child: NeumorphicButton(
                   style: NeumorphicStyle(
                     color: Color(0xFFFFFFFF),
                   ),
                   child: Text(
-                    'Messages',
+                    '  Messages  ',
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
                   ),
-                  onPressed: () {
-                    Get.toNamed('/message_group');
-                  }
-              ),
-            ),
+                ),
+              ),)
           ],
         ),
       ),

@@ -86,7 +86,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 15,left: 15,right: 15),
+                      padding: const EdgeInsets.only(top: 15,left: 5,right: 2),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -94,10 +94,21 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 18),
-                                child: CircleAvatar(
-                                  child: Icon(Icons.person,color: Colors.grey,size: 45,),
-                                  radius: 35,
-                                  backgroundColor: Colors.grey[200],
+                                child: Neumorphic(
+                                  style: NeumorphicStyle(
+                                    shape: NeumorphicShape.concave,
+                                    boxShape: NeumorphicBoxShape.roundRect(
+                                        BorderRadius.circular(38)),
+                                    depth: 4.5,
+                                    // intensity: 1,
+                                    lightSource: LightSource.left,
+                                    color:Color(0xFFFFFFFF),
+                                  ),
+                                  child: CircleAvatar(
+                                    child: Icon(Icons.person,color: Colors.grey,size: 65,),
+                                    radius: 35,
+                                    backgroundColor: Colors.grey[200],
+                                  ),
                                 ),
                               ),
                               Row(
@@ -218,7 +229,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                           ),
                           Positioned(
                             top: 0,
-                            right: 10,
+                            right: 30,
                             bottom: 0,
                             left: 80,
                             child:  Column(
@@ -242,7 +253,7 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                           ),
                           Positioned(
                             top: 0,
-                            right: 10,
+                            right: 30,
                             bottom: 0,
                             left: -20,
                             child:  Column(
@@ -254,7 +265,8 @@ class _MainHomeScreenState extends State<MainHomeScreen> with SingleTickerProvid
                                     child: Center(child: Text("0",style: TextStyle(fontWeight: FontWeight.bold,color: Colors.black54),)),
                                   ),
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(36.0)                               ),
+                                      borderRadius: BorderRadius.circular(36.0)
+                                  ),
                                 ),
                                 Text("Inner",style: TextStyle(fontWeight: FontWeight.w400,color: Colors.black54),),
                               ],
@@ -607,13 +619,14 @@ class MainHomeCategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Card(
+        elevation: 3,
         color: Colors.white70,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0)
         ),
         child: Container(
-          width: 100,
-          height: 80,
+          width: 120,
+          height: 100,
           child: Image.asset(image),
         ),
       ),

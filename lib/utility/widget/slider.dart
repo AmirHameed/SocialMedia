@@ -27,6 +27,7 @@ class FSlider extends StatelessWidget{
             jump: true,
             handlerHeight: 32.0,
             trackBar: FlutterSliderTrackBar(
+
               activeTrackBar: BoxDecoration(
                 gradient: SweepGradient(colors: [
                   Colors.pink,
@@ -49,13 +50,8 @@ class FSlider extends StatelessWidget{
                   Colors.green,
                   Colors.yellow,
                   Colors.purple
-                ], stops: [
-                  0.8,
-                  0.96,
-                  0.74,
-                  0.22,
-                  0.85
-                ], startAngle: 0.5, endAngle: 1),
+                ],
+                ),
               ),
             ),
             values: [10],
@@ -75,15 +71,18 @@ class FSlider extends StatelessWidget{
             onDragging: (handlerIndex, lowerValue, upperValue) {
               _lowerValue = lowerValue;
             },
+            handlerWidth: 100,
             handler: FlutterSliderHandler(
               // decoration: BoxDecoration(),
-
+              decoration: BoxDecoration(
+                color: Colors.transparent
+              ),
               child: Row(
                 children: [
-                  // Image.asset('assets/images/leftBrackets.png'),
+                  Image.asset('assets/images/leftBrackets.png',height: 20,color: Colors.grey,),
                   Image.asset(
-                      'assets/images/NoPath - Copy (28).png'),
-                  // Image.asset('assets/images/rightBrackets.png'),
+                      'assets/images/NoPath - Copy (28).png',height: 23,),
+                  Image.asset('assets/images/rightBrackets.png',height: 20,color: Colors.grey,),
                 ],
               ),
             ),

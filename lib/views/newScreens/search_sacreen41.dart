@@ -4,7 +4,13 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 
 import 'package:social_media/utility/constants.dart';
+import 'package:social_media/utility/widget/bottomNavBar.dart';
+import 'package:social_media/utility/widget/chipsWidget.dart';
 import 'package:social_media/utility/widget/circle_theme.dart';
+import 'package:social_media/utility/widget/image.dart';
+import 'package:social_media/utility/widget/searchBody.dart';
+import 'package:social_media/utility/widget/searchCategory.dart';
+import 'package:social_media/utility/widget/searchWidget.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -44,6 +50,7 @@ class _SearchScreenState extends State<SearchScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
+      bottomNavigationBar: NavBar(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -61,78 +68,11 @@ class _SearchScreenState extends State<SearchScreen>
                         height: 40,
                         width: 100,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 20),
-                        child: Container(
-                          height: 30,
-                          child: Neumorphic(
-                            style: NeumorphicStyle(
-                                lightSource: LightSource.topLeft,
-                                shape: NeumorphicShape.flat,
-                                boxShape: NeumorphicBoxShape.roundRect(
-                                    BorderRadius.circular(22)),
-                                color: Colors.white70),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 10),
-                                  child: Icon(
-                                    Icons.search,
-                                    color: Colors.grey[400],
-                                  ),
-                                ),
-                                Expanded(
-                                  child: TextField(
-                                    cursorColor: Colors.grey,
-                                    decoration: InputDecoration(
-                                        isDense: true,
-                                        hintText: "Search",
-                                        hintStyle:
-                                            TextStyle(color: Colors.grey[500]),
-                                        border: InputBorder.none,
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                horizontal: 10, vertical: 0)),
-                                    // controller: questionText,
-                                    // onSubmitted: messageController.handleSubmitted,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
+                      SearchWidget(),
                       SizedBox(
                         height: 8,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          MainHomeCategoryWidget(
-                            onTap: () {
-                            },
-                            image: 'assets/images/people.png',
-                          ),
-                          MainHomeCategoryWidget(
-                            onTap: () {
-                              Get.offNamed('/connectScreen');
-                            },
-                            image: 'assets/images/content.png',
-                          ),
-                          MainHomeCategoryWidget(
-                            onTap: () {
-                              Get.offNamed('/communityScreen');
-                            },
-                            image: 'assets/images/comm.png',
-                          ),
-                          MainHomeCategoryWidget(
-                            onTap: () {
-                              Get.offNamed('/productScreeen');
-                            },
-                            image: 'assets/images/Group 563.png',
-                          ),
-                        ],
-                      ),
+                      SearchCategory(),
                       TabBar(
                         controller: tabController,
                         isScrollable: true,
@@ -173,28 +113,11 @@ class _SearchScreenState extends State<SearchScreen>
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse 2.png',
-                                            text: 'MOOD',
-                                            width: width / 1.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -2.png',
-                                            text: 'OUTER CIRCLE',
-                                            width: width / 2.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -1.png',
-                                            text: 'UNIVERSE',
-                                            width: width / 2.5,
-                                          ),
-                                        ]),
+                                    child: ChipWidget(),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -202,70 +125,15 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -273,70 +141,15 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -344,63 +157,7 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
@@ -414,28 +171,11 @@ class _SearchScreenState extends State<SearchScreen>
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse 2.png',
-                                            text: 'MOOD',
-                                            width: width / 1.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -2.png',
-                                            text: 'OUTER CIRCLE',
-                                            width: width / 2.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -1.png',
-                                            text: 'UNIVERSE',
-                                            width: width / 2.5,
-                                          ),
-                                        ]),
+                                    child: ChipWidget(),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -443,70 +183,15 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -514,70 +199,15 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -585,63 +215,7 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
@@ -655,28 +229,11 @@ class _SearchScreenState extends State<SearchScreen>
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse 2.png',
-                                            text: 'MOOD',
-                                            width: width / 1.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -2.png',
-                                            text: 'OUTER CIRCLE',
-                                            width: width / 2.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -1.png',
-                                            text: 'UNIVERSE',
-                                            width: width / 2.5,
-                                          ),
-                                        ]),
+                                    child: ChipWidget(),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -684,70 +241,15 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -755,70 +257,15 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -826,63 +273,7 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
@@ -896,28 +287,11 @@ class _SearchScreenState extends State<SearchScreen>
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
-                                    child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse 2.png',
-                                            text: 'MOOD',
-                                            width: width / 1.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -2.png',
-                                            text: 'OUTER CIRCLE',
-                                            width: width / 2.5,
-                                          ),
-                                          CircleTheme(
-                                            image: 'assets/images/Ellipse -1.png',
-                                            text: 'UNIVERSE',
-                                            width: width / 2.5,
-                                          ),
-                                        ]),
+                                    child: ChipWidget(),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -925,70 +299,15 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -996,70 +315,15 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 10, bottom: 10),
+                                    padding: const EdgeInsets.only(
+                                        top: 10, bottom: 10),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.horizontal,
                                       child: Row(
@@ -1067,63 +331,7 @@ class _SearchScreenState extends State<SearchScreen>
                                           return Padding(
                                             padding: const EdgeInsets.only(
                                                 left: 5, right: 15, bottom: 8),
-                                            child: Column(
-                                              children: [
-                                                Column(
-                                                  children: [
-                                                    Text('3.2',style: TextStyle(fontSize: 12),),
-                                                    CircleAvatar(
-                                                      backgroundColor: Colors.white,
-                                                      radius: width / 20,
-                                                      child: CircleAvatar(
-                                                        // radius: 21,
-                                                        // backgroundColor: Colors.white,
-                                                        child: ClipOval(
-                                                            child: Image.asset(
-                                                              'assets/images/Ellipse -1.png',
-                                                              width: width / 5,
-                                                              // fit: BoxFit.cover,
-                                                            )),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  '12 Min',
-                                                  style: TextStyle(
-                                                      fontSize: 8,color: Colors.grey),
-                                                ),
-                                                Text(
-                                                  'Parveen M',
-                                                  style: TextStyle(fontSize: 12),
-                                                ),
-                                                InkWell(
-                                                  child: Neumorphic(
-                                                    padding: EdgeInsets.only(right: 5, bottom:7,top: 7, left: 5),
-                                                    style: NeumorphicStyle(
-                                                      shape: NeumorphicShape.flat,
-                                                      boxShape:
-                                                      NeumorphicBoxShape.roundRect(BorderRadius.circular(18.0)),
-                                                      color: Colors.blue,
-                                                    ),
-                                                    child: Text(
-                                                      'Lets Vibe',
-                                                      style: TextStyle(color: Colors.white),
-                                                    ),
-                                                  ),
-                                                  onTap: () {
-
-                                                  },
-                                                ),
-
-                                                Text(
-                                                  'ParveenMdd fdfdf',
-                                                  style: TextStyle(
-                                                      fontSize: 12, color: Colors.grey),
-                                                ),
-                                              ],
-                                            ),
+                                            child: SearchBodyWidget(),
                                           );
                                         }),
                                       ),
@@ -1163,12 +371,13 @@ class MainHomeCategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: Card(
+        elevation: 3,
         color: Colors.white70,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
         child: Container(
-          width: 70,
-          height: 50,
+          width: 100,
+          height: 80,
           child: Image.asset(image),
         ),
       ),
@@ -1176,3 +385,4 @@ class MainHomeCategoryWidget extends StatelessWidget {
     );
   }
 }
+//  'assets/images/Ellipse -1.png',

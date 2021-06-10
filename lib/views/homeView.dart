@@ -6,6 +6,7 @@ import 'package:social_media/utility/widget/bottomNavBar.dart';
 import 'package:social_media/utility/widget/circle_theme.dart';
 import 'package:social_media/utility/widget/mainPost.dart';
 import 'package:social_media/utility/widget/story.dart';
+import 'package:social_media/utility/widget/swapImages.dart';
 class Home extends StatelessWidget {
 
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class Home extends StatelessWidget {
                           //lightSource: LightSource.topLeft,
                           color:  Color(0xFFFFFFFF),
                         ),
-                        child: Icon(Icons.messenger,size: 12,color: Colors.grey,),
+                        child: Image.asset('assets/images/message.png'),
                       ),
                     ),
                   ),
@@ -65,6 +66,7 @@ class Home extends StatelessWidget {
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Column(
                                 children: [
@@ -126,20 +128,16 @@ class Home extends StatelessWidget {
                                 ],
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 15,right: 15),
+                                padding: const EdgeInsets.only(left: 25,right: 25),
                                 child: Story(text: 'Elon 22',image: 'assets/images/Ellipse -1.png',),
                               ),
                               Story(text: 'Elon 23',image: 'assets/images/Ellipse -2.png',),
                               Padding(
-                                padding: const EdgeInsets.only(left: 15,right: 15),
+                                padding: const EdgeInsets.only(left: 25,right: 25),
                                 child: Story(text: 'Elon 22',image: 'assets/images/Ellipse -1.png',),
                               ),
                               Story(text: 'Elon 24',image: 'assets/images/Ellipse -2.png',),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 15,right: 15),
-                                child: Story(text: 'Elon 22',image: 'assets/images/Ellipse 2.png',),
-                              ),
-                              Story(text: 'Elon 26',image: 'assets/images/Ellipse -1.png',),
+
                             ],
                           ),
                         ),
@@ -152,7 +150,8 @@ class Home extends StatelessWidget {
                       SizedBox(height: height*0.02,),
                       mainPost(image:'assets/images/shahrukh.png'),
                       SizedBox(height: height*0.02,),
-                      mainPost(image: 'assets/images/flower.png',),
+                      // mainPost(image: 'assets/images/flower.png',),
+                      SwapImages(),
                     ],
                   ),
                 ),

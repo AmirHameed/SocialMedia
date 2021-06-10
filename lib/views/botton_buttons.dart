@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:social_media/utility/constants.dart';
 
 import 'auth/login_screen.dart';
 
@@ -27,7 +28,8 @@ class BottomButtons extends StatelessWidget {
                     ),
                     child: FlatButton(
                         onPressed: () {
-                          Get.to(LoginScreen(),transition: Transition.noTransition);
+                          Get.to(LoginScreen(),
+                              transition: Transition.noTransition);
                         },
                         color: Colors.transparent,
                         height: MediaQuery.of(context).size.height * 0.1,
@@ -38,56 +40,59 @@ class BottomButtons extends StatelessWidget {
                             side: BorderSide.none),
                         child: Container(
                             child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: Text(
-                          "Done",
-                          style: Theme.of(context).textTheme.button,
-                        ),
-                            )))),
+                          alignment: Alignment.bottomRight,
+                          child: Text(
+                            "Done",
+                            style: Theme.of(context).textTheme.button,
+                          ),
+                        )))),
               )
             ]
           : [
-        Neumorphic(
-          style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              boxShape:
-              NeumorphicBoxShape.roundRect(BorderRadius.circular(48)),
-              depth: 12,
-              // lightSource: LightSource.topLeft,
-              color: Color(0xFFFFFFFF)),
-          child: NeumorphicButton(
-            onPressed: (){
-              controller.previousPage(
-                  duration: Duration(milliseconds: 200),
-                  curve: Curves.easeInOut);
-            },
-            style: NeumorphicStyle(
-              color: Color(0xFFFFFFFF),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15,right: 15,top:1,bottom:1),
-              child: Text(
-                'Previous',
-                style: TextStyle(
-                    color: Colors.black,fontSize: 12, fontWeight: FontWeight.bold),
+              Neumorphic(
+                style: NeumorphicStyle(
+                    shape: NeumorphicShape.concave,
+                    boxShape:
+                        NeumorphicBoxShape.roundRect(BorderRadius.circular(48)),
+                    depth: 12,
+                    // lightSource: LightSource.topLeft,
+                    color: Color(0xFFFFFFFF)),
+                child: NeumorphicButton(
+                  onPressed: () {
+                    controller.previousPage(
+                        duration: Duration(milliseconds: 200),
+                        curve: Curves.easeInOut);
+                  },
+                  style: NeumorphicStyle(
+                    color: Color(0xFFFFFFFF),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15, right: 15, top: 1, bottom: 1),
+                    child: Text(
+                      'Previous',
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-        ),
-          //   Container(
-          //     height : 40,
-          //     width : 80,
-          //     decoration: BoxDecoration(
-          //       color : Colors.grey[400],
-          //       borderRadius: BorderRadius.circular(36),
-          //     ),
-          //      child: Center(
-          //        child: Text(
-          //   "Previous",
-          //   style: Theme.of(context).textTheme.subtitle2,
-          // ),
-          //      ),
-          //   ),
+              //   Container(
+              //     height : 40,
+              //     width : 80,
+              //     decoration: BoxDecoration(
+              //       color : Colors.grey[400],
+              //       borderRadius: BorderRadius.circular(36),
+              //     ),
+              //      child: Center(
+              //        child: Text(
+              //   "Previous",
+              //   style: Theme.of(context).textTheme.subtitle2,
+              // ),
+              //      ),
+              //   ),
               // FlatButton(
               //   minWidth: 0.0,
               //   onPressed: () {
@@ -123,35 +128,39 @@ class BottomButtons extends StatelessWidget {
               //         ))
               //   ],
               // )
-        Neumorphic(
-          style: NeumorphicStyle(
-              shape: NeumorphicShape.concave,
-              boxShape:
-              NeumorphicBoxShape.roundRect(BorderRadius.circular(48)),
-              depth: 12,
-              // lightSource: LightSource.topLeft,
-              color: Color(0xFFFFFFFF)),
-          child: NeumorphicButton(
-            onPressed: (){
-              controller.nextPage(
-                  duration: Duration(milliseconds: 200),
-                  curve: Curves.easeInOut);
-            },
-            style: NeumorphicStyle(
-              color: Color(0xFFFFFFFF),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15,right: 15,top:1,bottom:1),
-              child: Text(
-                '   Next  ',
-                style: TextStyle(
-                    color: Colors.black,fontSize: 12, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-        ),
 
-      ],
+              Neumorphic(
+                style: NeumorphicStyle(
+                    shape: NeumorphicShape.concave,
+                    border: NeumorphicBorder(color: Colors.pinkAccent),
+                    boxShape:
+                        NeumorphicBoxShape.roundRect(BorderRadius.circular(48)),
+                    depth: 12,
+                    // lightSource: LightSource.topLeft,
+                    color: Color(0xFFFFFFFF)),
+                child: NeumorphicButton(
+                  onPressed: () {
+                    controller.nextPage(
+                        duration: Duration(milliseconds: 200),
+                        curve: Curves.easeInOut);
+                  },
+                  style: NeumorphicStyle(
+                    color: Color(0xFFFFFFFF),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 15, right: 15, top: 1, bottom: 1),
+                    child: Text(
+                      '   Next  ',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+            ],
     );
   }
 }
